@@ -41,5 +41,6 @@ int		ft_strcmp(char *s1, char *s2);
 *	Si l'on rencontre tout autre caractere (excepte isspace) avant un 1/0 : map invalide.
 *	Lors de la rencontre d'un 1 ou d'un 0, la map commence.
 *		Normalement, La premiere et deniere ligne sont seulement des 1 (pour une map ferme).
+*		Le premier et dernier octet de chaque ligne contient soit un isspace soit un 1.
 *
 */
