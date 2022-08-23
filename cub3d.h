@@ -5,6 +5,9 @@
 #include "libft/libft.h"
 #include <stdio.h>
 
+//check path
+//check rgb split sur virgule -> if size return split == 3 check value 0to255.
+
 typedef struct s_map
 {
 	size_t	nb_line;

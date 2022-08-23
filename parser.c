@@ -32,6 +32,8 @@ int	count_file_line(t_cub3d *game)
 	}
 }
 
+
+
 int		filemap_to_map_array(t_cub3d *game)
 {
 	size_t	i;
@@ -59,7 +61,6 @@ int		filemap_to_map_array(t_cub3d *game)
 	close(game->fd);
 	return (0);
 }
-
 
 void	fill_identifier(t_cub3d *game, char **identifier)
 {
