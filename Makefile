@@ -1,6 +1,6 @@
 NAME	= cub3d
 
-SRCS	= main.c parser.c utils.c
+SRCS	= main.c parser.c utils.c file_errors.c
 
 OBJS	= ${SRCS:.c=.o}
 OBJS	:= $(addprefix objs/,${OBJS})
