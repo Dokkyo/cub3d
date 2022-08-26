@@ -9,7 +9,6 @@
 // Ouverture du fichier (sauf si lien symbolique et repertoire)
 // Recuperer les elements textures et couleurs
 // Detecter le debut de la map
-
 // check path
 // check rgb split sur virgule -> if size return split == 3 check value 0to255.
 

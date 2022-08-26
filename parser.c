@@ -126,7 +126,15 @@ bool	map_start(t_cub3d *game)
 
 bool	is_valid_identifier(t_cub3d *game)
 {
+	size_t	i;
 
+	 i = 0;
+	while (game->file_line[i])
+	{
+		while (ft_isspace(game->file_line[i]))
+			++i;
+		
+	}
 }
 
 int		get_identifier(t_cub3d *game)
