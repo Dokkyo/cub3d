@@ -1,66 +1,6 @@
 #include "cub3d.h"
 
-// int	count_file_line(t_cub3d *game)
-// {
-// 	char	*line;
-//{
-// 	game->fd = open(game->filename, O_RDONLY);
-// 	if (game->fd == -1)
-// 	{
-// 		ft_putstr_fd("Open failed.\n", 2);
-// 		return (1);
-// 	}
-// 	else
-// 	{
-// 		printf("The file has been opened. FD number = %d.\n", game->fd);
-// 		line = get_next_line(game->fd);
-// 		if (!line)
-// 		{
-// 			ft_putstr_fd("Empty file.\n", 2);
-// 			return (1);
-// 		}
-// 		while (line != NULL)
-// 		{
-// 			++game->map.nb_line;
-// 			free(line);
-// 			line = get_next_line(game->fd);
-// 		}
-// 		free(line);
-// 		close(game->fd);
-// 		printf("NBLINE=%ld\n", game->map.nb_line);
-// 		return (0);
-// 	}
-// }
-
-// int		filemap_to_map_array(t_cub3d *game)
-// {
-// 	size_t	i;
-// 	char	*line;
-//
-// 	game->fd = open(game->filename, O_RDONLY);
-// 	if (game->fd == -1)
-// 	{
-// 		ft_putstr_fd("Open failed.\n", 2);
-// 		return (1);
-// 	}
-// 	game->file_content = malloc(sizeof(char *) * game->map.nb_line);
-// 	if (!game->file_content)
-// 	{
-// 		ft_putstr_fd("Error with malloc of the map array\n", 2);
-// 		return (1);
-// 	}
-// 	i = -1;
-// 	line = get_next_line(game->fd);
-// 	while (line != NULL)
-// 	{
-// 		game->file_content[++i] = line;
-// 		line = get_next_line(game->fd);
-// 	}
-// 	close(game->fd);
-// 	return (0);
-// }
-
-// void	fill_identifier(t_cub3d *game, char **identifier)
+// void	fill_identifier(t_cub3d *game, int i)
 // {
 // 	if (!ft_strcmp(identifier[0], "NO"))
 // 	{
@@ -100,16 +40,6 @@
 // 	}
 // }
 
-// void	check_identifier(t_cub3d *game)
-// {
-// 	size_t  i;
-// 	char	**identifier;
-// 	int		counter;
-
-// 	counter = 0;
-// 	i = 0;
-// }
-
 bool	map_start(t_cub3d *game)
 {
 	size_t	i;
@@ -121,44 +51,49 @@ bool	map_start(t_cub3d *game)
 			return (false);
 		++i;
 	}
+	printf("It start !\n");
 	return (true);
 }
 
 
 bool	is_valid_identifier(t_cub3d *game)
 {
+	(void)game;
 	size_t	i;
 
-	 i = 0;
+	i = 0;
 	while (game->file_line[i])
 	{
 		while (ft_isspace(game->file_line[i]))
 			++i;
-		
+		++i;
 	}
+
+	return (true);
 }
 
 int		get_identifier(t_cub3d *game)
 {
-	char	*str;
-	int		i;
+	//char	*str;
 
-	i = 0;
-	while (game->file_line != NULL || !map_start(game))
+	while (game->file_line != NULL && !map_start(game))
 	{
+		printf("line=%s\n", game->file_line);
 		if (!is_empty(game->file_line))
 		{
-			if (!is_valid_identifier(game->file_line))
+			if (!is_valid_identifier(game))
 				return (0);
 		}
 		free(game->file_line);
 		game->file_line = get_next_line(game->fd);
 	}
+	printf("line=%s\n", game->file_line);
+	return (1);
 }
 
 void	get_map(t_cub3d *game)
 {
-
+	(void)game;
 }
 
 bool	is_parsed(t_cub3d *game)
@@ -170,6 +105,12 @@ bool	is_parsed(t_cub3d *game)
 
 	return (true);
 }
+
+
+
+
+
+
 
 // int	ft_parse(t_cub3d *game)
 // {
