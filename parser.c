@@ -124,9 +124,18 @@ bool	map_start(t_cub3d *game)
 	return (true);
 }
 
+
 bool	is_valid_identifier(t_cub3d *game)
 {
+	size_t	i;
 
+	 i = 0;
+	while (game->file_line[i])
+	{
+		while (ft_isspace(game->file_line[i]))
+			++i;
+		
+	}
 }
 
 int		get_identifier(t_cub3d *game)
@@ -158,6 +167,8 @@ bool	is_parsed(t_cub3d *game)
 		return (false);
 	if (!get_identifier(game))
 		return (false);
+
+	return (true);
 }
 
 // int	ft_parse(t_cub3d *game)

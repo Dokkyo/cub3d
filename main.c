@@ -14,7 +14,6 @@ void	init(t_cub3d *game, char *filename)
 	game->map.identifier[5] = NULL;
 }
 
-
 int main(int ac, char **av)
 {
 	(void)ac;
