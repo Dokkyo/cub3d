@@ -1,84 +1,110 @@
 #include "cub3d.h"
 
-// void	fill_identifier(t_cub3d *game, int i)
+// bool	map_start(t_cub3d *game)
 // {
-// 	if (!ft_strcmp(identifier[0], "NO"))
+// 	size_t	i;
+// 	int		j;
+
+// 	i = 0;
+// 	j = 0;
+// 	if (is_empty(game->file_line))
+// 		return (false);
+// 	while (game->file_line[i])
 // 	{
-// 		game->map.identifier[0] = identifier[1];
-// 		free(identifier[0]);
-// 		free(identifier);
+// 		if (is_valid_character(game->file_line[i]))
+// 			++j;
+// 		++i;
 // 	}
-// 	else if (!ft_strcmp(identifier[0], "SO"))
-// 	{
-// 		game->map.identifier[1] = identifier[1];
-// 		free(identifier[0]);
-// 		free(identifier);
-// 	}
-// 	else if (!ft_strcmp(identifier[0], "WE"))
-// 	{
-// 		game->map.identifier[2] = identifier[1];
-// 		free(identifier[0]);
-// 		free(identifier);
-// 	}
-// 	else if (!ft_strcmp(identifier[0], "EA"))
-// 	{
-// 		game->map.identifier[3] = identifier[1];
-// 		free(identifier[0]);
-// 		free(identifier);
-// 	}
-// 	else if (!ft_strcmp(identifier[0], "F"))
-// 	{
-// 		game->map.identifier[4] = identifier[1];
-// 		free(identifier[0]);
-// 		free(identifier);
-// 	}
-// 	else if (!ft_strcmp(identifier[0], "C"))
-// 	{
-// 		game->map.identifier[5] = identifier[1];
-// 		free(identifier[0]);
-// 		free(identifier);
-// 	}
+
+// 	return (false);
 // }
 
-bool	map_start(t_cub3d *game)
+int		identifier(char *line, int i)
 {
-	size_t	i;
-
-	i = 0;
-	while (game->file_line[i])
+	if (!ft_strncmp(line + i, "NO ./", 5))
+		return (1);
+	else if (!ft_strncmp(line + i, "SO ./", 5))
+		return (2);
+	else if (!ft_strncmp(line + i, "WE ./", 5))
+		return (3);
+	else if (!ft_strncmp(line + i, "EA ./", 5))
+		return (4);
+	else if (!ft_strncmp(line + i, "F ", 3))
+		return (5);
+	else if (!ft_strncmp(line + i, "C ", 3))
+		return (6);
+	else
 	{
-		if (is_empty(game->file_line) || !is_valid_character(game->file_line[i]))
-			return (false);
-		++i;
+		ft_putstr_fd("Wrong name identifier\n", 2);
+		return (0);
 	}
-	printf("It start !\n");
+}
+
+bool	get_color(t_cub3d *game, int i, int idx)
+{
+	(void)game;
+	(void)i;
+	(void)idx;
+	printf("TO DO\n");
 	return (true);
 }
 
+bool	get_texture(t_cub3d *game, int i, int idx)
+{
+	char	*texture;
+
+	texture	= ft_strdup(game->file_line + i + 3);
+	if (game->tex.textures[idx - 1] == NULL)
+	{
+		game->tex.textures[idx - 1] = mlx_xpm_file_to_image(game->mlx, texture, &game->tex.img_height, &game->tex.img_width);
+		if (game->tex.textures[idx - 1] == NULL)
+		{
+			ft_putstr_fd("Texture reading has failed\n", 2);
+			return (false);
+		}
+	}
+	else
+	{
+		ft_putstr_fd("Double texture\n", 2);
+		return (false);
+	}
+	return (true);
+}
 
 bool	is_valid_identifier(t_cub3d *game)
 {
-	(void)game;
 	size_t	i;
+	int		ret;
 
 	i = 0;
-	while (game->file_line[i])
-	{
-		while (ft_isspace(game->file_line[i]))
-			++i;
+	ret = 0;
+	while (ft_isspace(game->file_line[i]))
 		++i;
+	ret = identifier(game->file_line, i);
+	if (ret > 0 && ret <= 4)
+	{
+		if (!get_texture(game, i, ret))
+			return (false);
 	}
-
+	else if (ret == 5 || ret == 6)
+	{
+		if(!get_color(game, i, ret))
+			return (false);
+	}
+	else
+		return (false);
 	return (true);
 }
 
 int		get_identifier(t_cub3d *game)
 {
-	//char	*str;
-
-	while (game->file_line != NULL && !map_start(game))
+	while (game->file_line != NULL)
 	{
-		printf("line=%s\n", game->file_line);
+		// if (map_start(game))
+		// {
+		// 	printf("line=%s\n", game->file_line);
+		// 	break ;
+		// }
 		if (!is_empty(game->file_line))
 		{
 			if (!is_valid_identifier(game))

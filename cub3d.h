@@ -12,27 +12,34 @@
 // check path
 // check rgb split sur virgule -> if size return split == 3 check value 0to255.
 
+typedef struct s_textures
+{
+	int		img_width;
+	int		img_height;
+	void	*textures[4];
+}t_textures;
+
 typedef struct s_map
 {
 	size_t	nb_line;
-	char	*identifier[6];
 	char	**map;
 }t_map;
 
 typedef struct s_cub3d
 {
-	char	*filename;
-	char	*file_line;
-	int		fd;
-	t_map	map;
-
+	char		*filename;
+	char		*file_line;
+	int			fd;
+	t_map		map;
+	t_textures	tex;
+	void		*mlx;
 }t_cub3d;
 
 bool	is_parsed(t_cub3d *game);
 int		wrong_file(t_cub3d *game);
 bool	is_valid_character(char c);
 int		is_empty(char *s);
-
+int		ft_strcmp(char *s1, char *s2);
 
 #endif
 

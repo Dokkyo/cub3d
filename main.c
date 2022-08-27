@@ -6,12 +6,13 @@ void	init(t_cub3d *game, char *filename)
 	game->file_line = NULL;
 	game->filename = filename;
 	game->fd = -42;
-	game->map.identifier[0] = NULL;
-	game->map.identifier[1] = NULL;
-	game->map.identifier[2] = NULL;
-	game->map.identifier[3] = NULL;
-	game->map.identifier[4] = NULL;
-	game->map.identifier[5] = NULL;
+	game->tex.textures[0] = NULL;
+	game->tex.textures[1] = NULL;
+	game->tex.textures[2] = NULL;
+	game->tex.textures[3] = NULL;
+	game->tex.img_height = 150;
+	game->tex.img_height = 150;
+	game->mlx = mlx_init();
 }
 
 int main(int ac, char **av)
@@ -31,7 +32,7 @@ int main(int ac, char **av)
 			init(&game, av[1]);
 			if (is_parsed(&game))
 			{
-				printf("Kill them all\n");
+				printf("Launch game\n");
 			}
 		}
 		else

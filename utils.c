@@ -2,7 +2,9 @@
 
 bool	is_valid_character(char c)
 {
-	return (c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'W' || c == 'E' || c == ' ');
+	if (c == '0' || c == '1')
+		return (true);
+	return (false);
 }
 
 int		is_empty(char *s)
