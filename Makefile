@@ -4,7 +4,7 @@ PARAMS = -Wall -Wextra -Werror
 
 INC_PATH = includes/
 SRC_PATH = ./
-OBJ_PATH = obj/
+OBJ_PATH = ./
 
 INC_NAME = cub3d.h
 MINILIBX_LIB_PATH = ./mlx_linux/libmlx_Linux.a
