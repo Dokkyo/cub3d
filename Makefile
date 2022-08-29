@@ -18,7 +18,8 @@ SRC_NAME =	main.c \
 			utils/ft_strcmp.c \
 			utils/ft_strcspn.c \
 			utils/mlx.c \
-			utils/pixel.c
+			utils/pixel.c \
+			raycasting/hooks.c
 
 LIBX_LINUX_FLAGS = -lm -lbsd -lX11 -lXext
 
