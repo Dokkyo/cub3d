@@ -1,9 +1,9 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include "mlx_linux/mlx.h"
+#include "../mlx_linux/mlx.h"
 #include "X11/X.h"
-#include "libft/libft.h"
+#include "../libft/libft.h"
 
 #include <unistd.h>
 #include <stdio.h>
@@ -226,6 +226,8 @@ void	parse(t_cub3d *game, char *filename);
 // 	array.c
 int		length_2d_array(char **a);
 void	free_2d_array(char **a);
+void	skip_digits(char **s);
+void	skip_spaces(char **s);
 
 // 	cub3d_exit.c
 void	exit_cub3d(t_cub3d *game, int my_errno);
