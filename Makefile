@@ -10,15 +10,15 @@ INC_NAME = cub3d.h
 MINILIBX_LIB_PATH = ./mlx_linux/libmlx_Linux.a
 LIBFT_LIB_PATH = ./libft/libft.a
 SRC_NAME =	main.c \
-				parsing/get_identifiers.c \
-				parsing/parse.c \
-				utils/array.c \
-				utils/cub3d_init.c \
-				utils/cub3d_exit.c \
-				utils/ft_strcmp.c \
-				utils/ft_strcspn.c \
-				utils/mlx.c \
-				utils/pixel.c
+			parsing/get_identifiers.c \
+			parsing/parse.c \
+			utils/array.c \
+			utils/cub3d_init.c \
+			utils/cub3d_exit.c \
+			utils/ft_strcmp.c \
+			utils/ft_strcspn.c \
+			utils/mlx.c \
+			utils/pixel.c
 
 LIBX_LINUX_FLAGS = -lm -lbsd -lX11 -lXext
 
@@ -62,13 +62,13 @@ fclean: clean
 
 logo:
 	@echo ""
-	@echo "\033[38;2;255;255;255m :::::::::: :::    ::: :::::::::  :::::::   ::::::::: "
-	@echo "\033[38;2;255;210;210m :+:        :+:    :+: :+:    :+:       :+  :+:     :+ "
-	@echo "\033[38;2;255;168;168m +:+        +:+    +:+ +:+    +:+       +:+ +:+     +:+ "
-	@echo "\033[38;2;255;126;126m :#:        +#+    +:+ :#::++::#:    ++::#: :#:     :#: "
-	@echo   "\033[38;2;255;84;84m +#+        +#+    +#+ +#+    +#+       +#+ +#+     +#+ "
-	@echo   "\033[38;2;255;42;42m #+#        #+#    #+# #+#    #+#       #+  #+#     #+ "
-	@echo     "\033[38;2;255;0;0m ########## ########## #########  #######   ######### "
+	@echo "\033[38;2;255;255;255m    ::::::: :::    ::: :::::::::  :::::::   ::::::::: "
+	@echo "\033[38;2;255;210;210m  +:        :+:    :+: :+:    :+:       :+  :+:     :+ "
+	@echo "\033[38;2;255;168;168m +:         +:+    +:+ +:+    +:+       +:+ +:+     +:+ "
+	@echo "\033[38;2;255;126;126m :#         +#+    +:+ :#::++::#      +::#  :#:     :#: "
+	@echo   "\033[38;2;255;84;84m +#         +#+    +#+ +#+    +#+       +#+ +#+     +#+ "
+	@echo   "\033[38;2;255;42;42m  +#        #+#    #+# #+#    #+#       #+  #+#     #+ "
+	@echo     "\033[38;2;255;0;0m    ####### ########## #########  #######   ######### "
 	@echo "\033[0m"
 
 re: fclean all
