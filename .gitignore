@@ -1,0 +1,5 @@
+**/.vscode
+objs
+**/*.o
+**/a.out
+libft.a
