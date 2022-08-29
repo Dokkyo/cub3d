@@ -161,15 +161,14 @@ typedef struct s_wall
 	t_image			*texture;
 }		t_wall;
 
-/****************************************************/
-/*		Map Informations structure					*/
-/****************************************************/
-typedef struct s_map
-{
-	size_t	nb_line;
-	char	**map;
-	char	*identifier[6];
-}		t_map;
+// /****************************************************/
+// /*		Map Informations structure					*/
+// /****************************************************/
+// typedef struct s_map
+// {
+// 	size_t	nb_line;
+// 	char	*identifier[6];
+// }		t_map;
 
 /********************************************************************/
 /*		Principal Data Structure									*/
@@ -180,7 +179,8 @@ typedef struct s_cub3d
 	void		*win;
 	char		*filename;
 	int			fd;
-	t_map		map;
+	char		**map;
+	// t_map		map;
 	t_images	images;
 	t_colors	colors;
 	t_wall		wall;
