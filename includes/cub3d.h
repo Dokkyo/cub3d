@@ -52,7 +52,7 @@ typedef enum e_errno
 	COLOR_DUPLICATE,
 	MAIN_ARG,
 	ERRORS
-}	t_errno;
+}		t_errno;
 
 /*********************************************************************/
 /*		Keycodes													 */
@@ -88,7 +88,7 @@ typedef struct s_image
 	int		bpp;
 	int		ll;
 	int		endian;
-}			t_image;
+}		t_image;
 
 /*********************************************************************/
 /*		All mlx images cub3d uses                                    */
@@ -101,7 +101,7 @@ typedef struct s_images
 	t_image	north;
 	t_image	south;
 	t_image	cub3d;
-}			t_images;
+}		t_images;
 
 /*********************************************************************/
 /*		Player Informations Structure								 */
@@ -115,7 +115,7 @@ typedef struct s_player
 	double			dir;
 	t_int_vector	map;
 	t_double_vector	pos;
-}					t_player;
+}		t_player;
 
 /*********************************************************************/
 /*		Pixel representation										 */
@@ -128,7 +128,7 @@ typedef struct s_color
 	unsigned char	g;
 	unsigned char	b;
 	unsigned char	parsed;
-}					t_color;
+}		t_color;
 
 /*********************************************************************/
 /*		Color of the Floor and the Ceilling							 */
@@ -138,7 +138,7 @@ typedef struct s_colors
 {
 	t_color	floor;
 	t_color	ceiling;
-}			t_colors;
+}		t_colors;
 
 /*********************************************************************/
 /*		Wall Informations Structure									 */
@@ -152,7 +152,7 @@ typedef struct s_wall
 	int				column;
 	double			dist;
 	t_image			*texture;
-}			t_wall;
+}		t_wall;
 
 /*********************************************************************/
 /*		Map Informations structure									 */
@@ -163,7 +163,7 @@ typedef struct s_map
 	size_t	nb_line;
 	char	**map;
 	char	*identifier[6];
-}t_map;
+}		t_map;
 
 /********************************************************************/
 /*		Principal Data Structure									*/
@@ -182,7 +182,7 @@ typedef struct s_cub3d
 	t_player	player;
 	const char	*my_strerror[ERRORS + 1];
 
-}t_cub3d;
+}		t_cub3d;
 
 int		ft_parse(t_cub3d *game);
 int		ft_strcmp(char *s1, char *s2);
