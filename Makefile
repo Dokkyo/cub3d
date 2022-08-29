@@ -4,7 +4,7 @@ PARAMS = -Wall -Wextra -Werror
 
 INC_PATH = includes/
 SRC_PATH = ./
-OBJ_PATH = objs/
+OBJ_PATH = obj/
 
 INC_NAME = cub3d.h
 MINILIBX_LIB_PATH = ./mlx_linux/libmlx_Linux.a
@@ -58,7 +58,7 @@ fclean: clean
 	@make -C libft fclean
 	@make -C mlx_linux clean
 	@rm -rf $(NAME)
-	@echo "$(RED)[cub3d] : $(DEF)Full Cleaning               $(GRN)[OK]$(DEF)"
+	@echo "$(RED)[cub3d] : $(DEF)Full Cleaning               $(GRN)[OK]$(DEF)"           $(GRN)[OK]$(DEF)"
 
 logo:
 	@echo ""
