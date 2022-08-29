@@ -62,11 +62,11 @@ void	parse(t_cub3d *game, char *filename)
 			break ;
 		}
 		else
-			//get_identifiers(t_cub3d *game, char *line);
+			// get_identifiers(t_cub3d *game, char *line);
 		free(line);
 	}
 	close(fd);
-	// check_identifiers(game);
+	check_identifiers(game);
 	// check_map(game);
 	get_mlx_window(game);
 	get_mlx_image(game);

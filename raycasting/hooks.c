@@ -28,7 +28,7 @@ static int	key_hook(int key, t_cub3d *game)
 	else
 		return (1);
 	*/
-	raycasting(game);
+	// raycasting(game);
 	return (0);
 }
 

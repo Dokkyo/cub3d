@@ -1,11 +1,10 @@
 NAME	= cub3d.out
 
 SRCS	= main.c \
-				parsing/parse.c \
-				parsing/get_identifiers.c \
-				parsing/check_identifiers.c \
-				parsing/get_map.c \
 				parsing/check_map.c \
+				parsing/get_map.c \
+				parsing/get_identifiers.c \
+				parsing/parse.c \
 				utils/array.c \
 				utils/cub3d_init.c \
 				utils/cub3d_exit.c \

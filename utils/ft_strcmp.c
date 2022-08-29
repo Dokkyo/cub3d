@@ -1,25 +1,18 @@
 #include "../includes/cub3d.h"
 
-bool	is_valid_character(char c)
+int	ft_strcmp(char *s1, char *s2)
 {
-	if (c == '0' || c == '1')
-		return (true);
-	return (false);
-}
-
-int		is_empty(char *s)
-{
-	size_t		i;
-
-	i = 0;
-	if (s)
+	if (s1 && s2)
 	{
-		while (s[i])
+		while (*s1 && *s2)
 		{
-			if (s[i] > 32)
-				return (0);
-			++i;
+			if (*s1 != *s2)
+				return (1);
+			s1++;
+			s2++;
 		}
 	}
-	return (1);
+	if (*s1 || *s2)
+		return (1);
+	return (0);
 }

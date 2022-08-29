@@ -54,9 +54,9 @@ typedef enum e_errno
 	ERRORS
 }		t_errno;
 
-/*********************************************************************/
-/*		Keycodes													 */
-/*********************************************************************/
+/********************************************************************/
+/*		Keycodes													*/
+/********************************************************************/
 
 #define W 119
 #define A 97
@@ -66,9 +66,9 @@ typedef enum e_errno
 #define LEFT 65361
 #define RIGHT 65363
 
-/*********************************************************************/
-/*		Config for the player										 */
-/*********************************************************************/
+/********************************************************************/
+/*		Config for the player										*/
+/********************************************************************/
 
 #define CUB_SIZE 64
 #define WIN_SIZE 1024
@@ -77,9 +77,9 @@ typedef enum e_errno
 #define MOVEMENT_UNIT 20
 #define BASE_DEC "0123456789"
 
-/*********************************************************************/
-/*		All mlx image's useful data in one place                     */
-/*********************************************************************/
+/********************************************************************/
+/*		All mlx image's useful data in one place					*/
+/********************************************************************/
 
 typedef struct s_image
 {
@@ -90,9 +90,9 @@ typedef struct s_image
 	int		endian;
 }		t_image;
 
-/*********************************************************************/
-/*		All mlx images cub3d uses                                    */
-/*********************************************************************/
+/********************************************************************/
+/*		All mlx images cub3d uses									*/
+/********************************************************************/
 
 typedef struct s_images
 {
@@ -103,9 +103,25 @@ typedef struct s_images
 	t_image	cub3d;
 }		t_images;
 
-/*********************************************************************/
-/*		Player Informations Structure								 */
-/*********************************************************************/
+/********************************************************************/
+/*		2D vectors													*/
+/********************************************************************/
+
+typedef struct s_int_vector
+{
+	int	x;
+	int	y;
+}		t_int_vector;
+
+typedef struct s_double_vector
+{
+	double	x;
+	double	y;
+}			t_double_vector;
+
+/********************************************************************/
+/*		Player Informations Structure								*/
+/********************************************************************/
 
 typedef struct s_player
 {
@@ -117,9 +133,9 @@ typedef struct s_player
 	t_double_vector	pos;
 }		t_player;
 
-/*********************************************************************/
-/*		Pixel representation										 */
-/*********************************************************************/
+/********************************************************************/
+/*		Pixel representation										*/
+/********************************************************************/
 
 typedef struct s_color
 {
@@ -130,9 +146,9 @@ typedef struct s_color
 	unsigned char	parsed;
 }		t_color;
 
-/*********************************************************************/
-/*		Color of the Floor and the Ceilling							 */
-/*********************************************************************/
+/********************************************************************/
+/*		Color of the Floor and the Ceilling							*/
+/********************************************************************/
 
 typedef struct s_colors
 {
@@ -140,9 +156,9 @@ typedef struct s_colors
 	t_color	ceiling;
 }		t_colors;
 
-/*********************************************************************/
-/*		Wall Informations Structure									 */
-/*********************************************************************/
+/********************************************************************/
+/*		Wall Informations Structure									*/
+/********************************************************************/
 
 typedef struct s_wall
 {
@@ -154,9 +170,9 @@ typedef struct s_wall
 	t_image			*texture;
 }		t_wall;
 
-/*********************************************************************/
-/*		Map Informations structure									 */
-/*********************************************************************/
+/********************************************************************/
+/*		Map Informations structure									*/
+/********************************************************************/
 
 typedef struct s_map
 {
@@ -184,8 +200,78 @@ typedef struct s_cub3d
 
 }		t_cub3d;
 
-int		ft_parse(t_cub3d *game);
+
+/*	Ajoutez les protos de cette maniere :
+**
+**	*************************************
+**	*		Nom dossier					*
+**	*************************************
+**	\n
+**	*		Nom fichier					*
+**	protos du fichier (un par ligne)
+**	\n
+**	*		Nom fichier					*
+**	protos du fichier (un par ligne)
+*/
+
+/****************************************/
+/*				parsing					*/
+/****************************************/
+
+//	check_map.c
+void	check_map(t_cub3d game/*, autre si besoin*/);
+
+//	get_identifiers.c
+void	get_identifiers(t_cub3d *game, char *line);
+
+//	get_map.c
+void	get_map(t_cub3d game, int fd, char **line);
+
+//	parse.c
+void	parse(t_cub3d *game, char *filename);
+
+/****************************************/
+/*				utils					*/
+/****************************************/
+
+// 	array.c
+int		length_2d_array(char **a);
+void	free_2d_array(char **a);
+
+// 	cub3d_exit.c
+void	exit_cub3d(t_cub3d *game, int my_errno);
+
+// 	cub3d_init.c
+void	init_cub3d(t_cub3d *game);
+
+// 	ft_strcmp.c
 int		ft_strcmp(char *s1, char *s2);
+
+// 	ft_strnspn.c
+int		ft_strcspn(const char *s, const char *rejected);
+
+//	mlx.c
+void	get_mlx_instance(t_cub3d *game);
+void	get_mlx_window(t_cub3d *game);
+void	get_mlx_image(t_cub3d *game);
+
+//	pixel.c
+void	pixel_to_image(t_image *image, int x, int y, int color);
+int		get_image_pixel_color(t_image *image, int col, int row);
+
+/****************************************/
+/*				raycasting				*/
+/****************************************/
+
+//	hooks.c
+void	define_hooks(t_cub3d *game);
+
+
+void			pixel_to_image(t_image *image, int x, int t, int color);
+int				get_image_pixel_color(t_image *image, int x, int y);
+
+// int		ft_parse(t_cub3d *game);
+// int		ft_strcmp(char *s1, char *s2);
 
 #endif
 
