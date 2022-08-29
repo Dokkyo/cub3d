@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: naben-za <naben-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/03 13:04:53 by naben-za          #+#    #+#             */
-/*   Updated: 2022/08/27 03:25:43 by naben-za         ###   ########.fr       */
+/*   Created: 2022/08/25 18:48:11 by naben-za          #+#    #+#             */
+/*   Updated: 2022/08/25 18:48:46 by naben-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+int	ft_strcmp(char *s1, char *s2)
 {
-	char	*str;
-	size_t	i;
+	int	i;
 
-	i = ft_strlen(s);
-	str = malloc(sizeof(*str) * (i + 1));
-	if (!str)
-		return (NULL);
 	i = 0;
-	while (s[i] && s[i] != '\r')
-	{
-		str[i] = s[i];
+	if (!s1 || !s2)
+		return (-1);
+	while ((s1[i] && s2[i]) && (s1[i] == s2[i]))
 		i++;
-	}
-	str[i] = 0;
-	return (str);
+	return (s1[i] - s2[i]);
 }

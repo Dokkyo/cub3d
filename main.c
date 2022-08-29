@@ -3,31 +3,25 @@
 void	init(t_cub3d *game, char *filename)
 {
 	game->map.nb_line = 0;
-	game->map.map = NULL;
+	game->file_line = NULL;
 	game->filename = filename;
 	game->fd = -42;
-	game->map.identifier[0] = NULL;
-	game->map.identifier[1] = NULL;
-	game->map.identifier[2] = NULL;
-	game->map.identifier[3] = NULL;
-	game->map.identifier[4] = NULL;
-	game->map.identifier[5] = NULL;
-}
-
-void	free_map(t_cub3d *game)
-{
-	size_t	i;
-
-	i = -1;
-	while (++i < game->map.nb_line)
-		free(game->map.map[i]);
-	free(game->map.map);
+	game->tex.textures[0] = NULL;
+	game->tex.textures[1] = NULL;
+	game->tex.textures[2] = NULL;
+	game->tex.textures[3] = NULL;
+	game->tex.img_height = 150;
+	game->tex.img_height = 150;
+	game->mlx = mlx_init();
 }
 
 int main(int ac, char **av)
 {
+	(void)ac;
+	(void)av;
+
 	int len;
-	int ret;
+	//int ret;
 	t_cub3d game;
 
 	if (ac == 2)
@@ -36,19 +30,17 @@ int main(int ac, char **av)
 		if (ft_strcmp(av[1][len - 4], ".cub"))
 		{
 			init(&game, av[1]);
-			ret = ft_parse(&game);
-			if (ret == 0)
+			if (is_parsed(&game))
 			{
-				//launch_game
+				printf("Launch game\n");
 			}
-			if (game.map.map)
-				 free_map(&game);
 		}
 		else
 			ft_putstr_fd("Wrong file extension.", 2);
 	}
 	else
 		ft_putstr_fd("Wrong arguments number.", 2);
+	return (0);
 }
 
 /*
