@@ -1,19 +1,19 @@
 #include "cub3d.h"
 
-void	init(t_cub3d *game, char *filename)
-{
-	game->map.nb_line = 0;
-	game->file_line = NULL;
-	game->filename = filename;
-	game->fd = -42;
-	game->tex.textures[0] = NULL;
-	game->tex.textures[1] = NULL;
-	game->tex.textures[2] = NULL;
-	game->tex.textures[3] = NULL;
-	game->tex.img_height = 150;
-	game->tex.img_height = 150;
-	game->mlx = mlx_init();
-}
+// void	init(t_cub3d *game, char *filename)
+// {
+// 	game->map.nb_line = 0;
+// 	game->file_line = NULL;
+// 	game->filename = filename;
+// 	game->fd = -42;
+// 	game->tex.textures[0] = NULL;
+// 	game->tex.textures[1] = NULL;
+// 	game->tex.textures[2] = NULL;
+// 	game->tex.textures[3] = NULL;
+// 	game->tex.img_height = 150;
+// 	game->tex.img_height = 150;
+// 	game->mlx = mlx_init();
+// }
 
 int main(int ac, char **av)
 {
