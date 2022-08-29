@@ -1,13 +1,5 @@
-<<<<<<< HEAD
 **/*.o
 objs
 **/.out
 **/.vscode
-fdf
-=======
-**/.vscode
-objs
-**/*.o
-**/a.out
->>>>>>> benj
 libft.a
