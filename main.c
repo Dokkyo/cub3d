@@ -33,7 +33,7 @@ int main(int ac, char **av)
 	if (ac == 2)
 	{
 		len = ft_strlen(av[1]);
-		if (av[1][len - 1] == 'b' && av[1][len - 2] == 'u' && av[1][len - 3] == 'c' && av[1][len - 4] == '.')
+		if (ft_strcmp(av[1][len - 4], ".cub"))
 		{
 			init(&game, av[1]);
 			ret = ft_parse(&game);
@@ -50,3 +50,23 @@ int main(int ac, char **av)
 	else
 		ft_putstr_fd("Wrong arguments number.", 2);
 }
+
+/*
+
+int	main(int ac, char **av)
+{
+	t_data	game;
+
+	init_cub3d(&game);
+	if (ac == 2)
+	{
+		parse(&game, av[1]);
+		define_hooks(&game);
+		exit_cub3d(&game, 0);
+	}
+	else
+		exit_cub3d(&game, MAIN_ARG);
+	return (0);
+}
+
+*/

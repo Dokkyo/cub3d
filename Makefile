@@ -1,6 +1,18 @@
-NAME	= cub3d
+NAME	= cub3d.out
 
-SRCS	= main.c parser.c utils.c
+SRCS	= main.c \
+				parsing/parse.c \
+				parsing/get_identifiers.c \
+				parsing/check_identifiers.c \
+				parsing/get_map.c \
+				parsing/check_map.c \
+				utils/array.c \
+				utils/cub3d_init.c \
+				utils/cub3d_exit.c \
+				utils/ft_strcmp.c \
+				utils/ft_strcspn.c \
+				utils/mlx.c \
+				utils/pixel.c
 
 OBJS	= ${SRCS:.c=.o}
 OBJS	:= $(addprefix objs/,${OBJS})

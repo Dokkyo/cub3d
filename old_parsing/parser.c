@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../includes/cub3d.h"
 
 int	count_file_line(t_cub3d *game)
 {
