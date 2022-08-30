@@ -19,7 +19,11 @@ SRC_NAME =	main.c \
 			utils/ft_strcspn.c \
 			utils/mlx.c \
 			utils/pixel.c \
-			raycasting/hooks.c
+			raycasting/graphics_effects.c \
+			raycasting/hooks.c \
+			raycasting/move.c \
+			raycasting/raycasting.c \
+			raycasting/rotate.c
 
 LIBX_LINUX_FLAGS = -lm -lbsd -lX11 -lXext
 

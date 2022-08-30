@@ -4,17 +4,17 @@ t_int_vector	get_step(double ray)
 {
 	t_int_vector	step;
 
-	if (ray < 0.5 * H)
+	if (ray < 0.5 * M_PI)
 	{
 		step.x = 1;
 		step.y = 1;
 	}
-	else if (ray < H)
+	else if (ray < M_PI)
 	{
 		step.x = -1;
 		step.y = 1;
 	}
-	else if (ray < 1.5 * H)
+	else if (ray < 1.5 * M_PI)
 	{
 		step.x = -1;
 		step.y = -1;
@@ -31,25 +31,25 @@ static t_double_vector	get_delta_dist(double ray)
 {
 	t_double_vector	delta_dist;
 
-	if (ray < 0.5 * H)
+	if (ray < 0.5 * M_PI)
 	{
 		delta_dist.x = CUB_SIZE / cos(ray);
-		delta_dist.y = CUB_SIZE / cos(0.5 * H - ray);
+		delta_dist.y = CUB_SIZE / cos(0.5 * M_PI - ray);
 	}
-	else if (ray < H)
+	else if (ray < M_PI)
 	{
-		delta_dist.x = CUB_SIZE / cos(H - ray);
-		delta_dist.y = CUB_SIZE / cos(ray - 0.5 * H);
+		delta_dist.x = CUB_SIZE / cos(M_PI - ray);
+		delta_dist.y = CUB_SIZE / cos(ray - 0.5 * M_PI);
 	}
-	else if (ray < 1.5 * H)
+	else if (ray < 1.5 * M_PI)
 	{
-		delta_dist.x = CUB_SIZE / cos(ray - H);
-		delta_dist.y = CUB_SIZE / cos(1.5 * H - ray);
+		delta_dist.x = CUB_SIZE / cos(ray - M_PI);
+		delta_dist.y = CUB_SIZE / cos(1.5 * M_PI - ray);
 	}
 	else
 	{
-		delta_dist.x = CUB_SIZE / cos(2.0 * H - ray);
-		delta_dist.y = CUB_SIZE / cos(ray - 1.5 * H);
+		delta_dist.x = CUB_SIZE / cos(2.0 * M_PI - ray);
+		delta_dist.y = CUB_SIZE / cos(ray - 1.5 * M_PI);
 	}
 	return (delta_dist);
 }
@@ -59,25 +59,25 @@ static t_double_vector	init_ray_dist(t_int_vector map, t_double_vector pos,
 {
 	t_double_vector	dist;
 
-	if (ray < 0.5 * H)
+	if (ray < 0.5 * M_PI)
 	{
-		dist.y = ((map.y + 1) * CUB_SIZE - pos.y) / cos(0.5 * H - ray);
+		dist.y = ((map.y + 1) * CUB_SIZE - pos.y) / cos(0.5 * M_PI - ray);
 		dist.x = ((map.x + 1) * CUB_SIZE - pos.x) / cos(ray);
 	}
-	else if (ray < H)
+	else if (ray < M_PI)
 	{
-		dist.y = ((map.y + 1) * CUB_SIZE - pos.y) / cos(ray - 0.5 * H);
-		dist.x = (pos.x - map.x * CUB_SIZE) / cos(H - ray);
+		dist.y = ((map.y + 1) * CUB_SIZE - pos.y) / cos(ray - 0.5 * M_PI);
+		dist.x = (pos.x - map.x * CUB_SIZE) / cos(M_PI - ray);
 	}
-	else if (ray < 1.5 * H)
+	else if (ray < 1.5 * M_PI)
 	{
-		dist.y = (pos.y - map.y * CUB_SIZE) / cos(1.5 * H - ray);
-		dist.x = (pos.x - map.x * CUB_SIZE) / cos(ray - H);
+		dist.y = (pos.y - map.y * CUB_SIZE) / cos(1.5 * M_PI - ray);
+		dist.x = (pos.x - map.x * CUB_SIZE) / cos(ray - M_PI);
 	}
 	else
 	{
-		dist.y = (pos.y - map.y * CUB_SIZE) / cos(ray - 1.5 * H);
-		dist.x = ((map.x + 1) * CUB_SIZE - pos.x) / cos(2.0 * H - ray);
+		dist.y = (pos.y - map.y * CUB_SIZE) / cos(ray - 1.5 * M_PI);
+		dist.x = ((map.x + 1) * CUB_SIZE - pos.x) / cos(2.0 * M_PI - ray);
 	}
 	return (dist);
 }

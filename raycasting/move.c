@@ -4,25 +4,25 @@ static t_double_vector	get_delta_move(double dir, double movement_unit)
 {
 	t_double_vector	delta;
 
-	if (dir < 0.5 * H)
+	if (dir < 0.5 * M_PI)
 	{
 		delta.x = cos(dir) * movement_unit;
-		delta.y = cos(0.5 * H - dir) * movement_unit;
+		delta.y = cos(0.5 * M_PI - dir) * movement_unit;
 	}
-	else if (dir < H)
+	else if (dir < M_PI)
 	{
-		delta.x = cos(H - dir) * MOVEMENT_UNIT;
-		delta.y = cos(dir - 0.5 * H) * MOVEMENT_UNIT;
+		delta.x = cos(M_PI - dir) * MOVEMENT_UNIT;
+		delta.y = cos(dir - 0.5 * M_PI) * MOVEMENT_UNIT;
 	}
-	else if (dir < 1.5 * H)
+	else if (dir < 1.5 * M_PI)
 	{
-		delta.x = cos(dir - H) * movement_unit;
-		delta.y = cos(1.5 * H - dir) * movement_unit;
+		delta.x = cos(dir - M_PI) * movement_unit;
+		delta.y = cos(1.5 * M_PI - dir) * movement_unit;
 	}
 	else
 	{
-		delta.x = cos(2.0 * H - dir) * movement_unit;
-		delta.y = cos(dir - 1.5 * H) * movement_unit;
+		delta.x = cos(2.0 * M_PI - dir) * movement_unit;
+		delta.y = cos(dir - 1.5 * M_PI) * movement_unit;
 	}
 	return (delta);
 }

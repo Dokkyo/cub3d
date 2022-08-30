@@ -280,10 +280,12 @@ void	define_hooks(t_cub3d *game);
 void	move(t_cub3d *game, double dir);
 
 //	raycasting.c
-void	dda(t_cub3d *game);
-void	raycasting(t_cub3d *game);
+t_int_vector	get_step(double ray);
+void			dda(t_cub3d *game);
+void			raycasting(t_cub3d *game);
 
 //	rotate.c
+double	rotate(double ray, double angle);
 void	rotate_player(t_player *player, double angle);
 
 // int		ft_parse(t_cub3d *game);

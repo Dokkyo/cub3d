@@ -10,22 +10,22 @@ static void	get_wall_column(t_cub3d *game)
 	angle = game->ray.angle;
 	texture = game->wall.texture;
 	pos = game->player.pos;
-	if (texture == &game->images.est && angle < 0.5 * H)
+	if (texture == &game->images.est && angle < 0.5 * M_PI)
 		col = pos.y + sin(angle) * game->ray.dist.x;
-	else if (texture == &game->images.est && angle > 1.5 * H)
-		col = pos.y - sin(2 * H - angle) * game->ray.dist.x;
-	else if (texture == &game->images.west && angle < H)
-		col = pos.y + sin(H - angle) * game->ray.dist.x;
-	else if (texture == &game->images.west && angle > H)
-		col = pos.y - sin(angle - H) * game->ray.dist.x;
-	else if (texture == &game->images.north && angle < H * 1.5)
-		col = pos.x - sin(H * 1.5 - angle) * game->ray.dist.y;
-	else if (texture == &game->images.north && angle > H * 1.5)
-		col = pos.x + sin(angle - 1.5 * H) * game->ray.dist.y;
-	else if (texture == &game->images.south && angle < H * 0.5)
-		col = pos.x + sin(0.5 * H - angle) * game->ray.dist.y;
+	else if (texture == &game->images.est && angle > 1.5 * M_PI)
+		col = pos.y - sin(2 * M_PI - angle) * game->ray.dist.x;
+	else if (texture == &game->images.west && angle < M_PI)
+		col = pos.y + sin(M_PI - angle) * game->ray.dist.x;
+	else if (texture == &game->images.west && angle > M_PI)
+		col = pos.y - sin(angle - M_PI) * game->ray.dist.x;
+	else if (texture == &game->images.north && angle < M_PI * 1.5)
+		col = pos.x - sin(M_PI * 1.5 - angle) * game->ray.dist.y;
+	else if (texture == &game->images.north && angle > M_PI * 1.5)
+		col = pos.x + sin(angle - 1.5 * M_PI) * game->ray.dist.y;
+	else if (texture == &game->images.south && angle < M_PI * 0.5)
+		col = pos.x + sin(0.5 * M_PI - angle) * game->ray.dist.y;
 	else
-		col = pos.x - sin(angle - 0.5 * H) * game->ray.dist.y;
+		col = pos.x - sin(angle - 0.5 * M_PI) * game->ray.dist.y;
 	game->wall.column = (int)(col) % CUB_SIZE;
 }
 
@@ -42,14 +42,14 @@ static void	get_wall_texture(t_cub3d *game)
 {
 	if (game->ray.dist.x < game->ray.dist.y)
 	{
-		if (game->ray.angle > 0.5 * H && game->ray.angle < 1.5 * H)
+		if (game->ray.angle > 0.5 * M_PI && game->ray.angle < 1.5 * M_PI)
 			game->wall.texture = &game->images.west;
 		else
 			game->wall.texture = &game->images.est;
 	}
 	else
 	{
-		if (game->ray.angle > 0 && game->ray.angle < H)
+		if (game->ray.angle > 0 && game->ray.angle < M_PI)
 			game->wall.texture = &game->images.south;
 		else
 			game->wall.texture = &game->images.north;

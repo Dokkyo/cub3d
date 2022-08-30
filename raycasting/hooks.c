@@ -13,11 +13,11 @@ static int	key_hook(int key, t_cub3d *game)
 	if (key == W)
 		move(game, game->player.dir);
 	else if (key == S)
-		move(game, rotate(game->player.dir, H));
+		move(game, rotate(game->player.dir, M_PI));
 	else if (key == A)
-		move(game, rotate(game->player.dir, H / 2 * (-1)));
+		move(game, rotate(game->player.dir, M_PI / 2 * (-1)));
 	else if (key == D)
-		move(game, rotate(game->player.dir, H / 2));
+		move(game, rotate(game->player.dir, M_PI / 2));
 	else if (key == RIGHT)
 		rotate_player(&game->player, game->player.rot);
 	else if (key == LEFT)

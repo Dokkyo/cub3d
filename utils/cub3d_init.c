@@ -40,8 +40,8 @@ static void	init_my_strerror_part_two(const char **my_strerror)
 
 static void	init_player(t_player *player)
 {
-	player->fov = FOV * H / 180.0;
-	player->rot = ROTATION_UNIT * H / 180.0;
+	player->fov = FOV * M_PI / 180.0;
+	player->rot = ROTATION_UNIT * M_PI / 180.0;
 	player->mov = MOVEMENT_UNIT;
 }
 

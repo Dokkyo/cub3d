@@ -5,10 +5,10 @@ double	rotate(double ray, double angle)
 	double	ret;
 
 	ret = ray + angle;
-	while (ret >= 2 * H)
-		ret -= 2 * H;
+	while (ret >= 2 * M_PI)
+		ret -= 2 * M_PI;
 	while (ret < 0)
-		ret += 2 * H;
+		ret += 2 * M_PI;
 	return (ret);
 }
 
