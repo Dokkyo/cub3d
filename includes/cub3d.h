@@ -149,6 +149,21 @@ typedef struct s_colors
 }		t_colors;
 
 /****************************************************/
+/*		Ray											*/
+/****************************************************/
+
+typedef struct s_ray
+{
+	int				column;
+	double			rot;
+	double			angle;
+	t_int_vector	map;
+	t_int_vector	step;
+	t_double_vector	dist;
+	t_double_vector	delta;
+}		t_ray;
+
+/****************************************************/
 /*		Wall Informations Structure					*/
 /****************************************************/
 typedef struct s_wall
@@ -184,6 +199,7 @@ typedef struct s_cub3d
 	t_images	images;
 	t_colors	colors;
 	t_wall		wall;
+	t_ray		ray;
 	t_player	player;
 	const char	*my_strerror[ERRORS + 1];
 
@@ -254,8 +270,21 @@ int		get_image_pixel_color(t_image *image, int col, int row);
 /*				raycasting				*/
 /****************************************/
 
+//	graphics_effects.c
+void	textured_column_to_image(t_cub3d *game);
+
 //	hooks.c
 void	define_hooks(t_cub3d *game);
+
+//	move.c
+void	move(t_cub3d *game, double dir);
+
+//	raycasting.c
+void	dda(t_cub3d *game);
+void	raycasting(t_cub3d *game);
+
+//	rotate.c
+void	rotate_player(t_player *player, double angle);
 
 // int		ft_parse(t_cub3d *game);
 // int		ft_strcmp(char *s1, char *s2);

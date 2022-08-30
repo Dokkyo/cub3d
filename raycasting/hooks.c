@@ -8,28 +8,23 @@ static	int	render(t_cub3d *game)
 
 static int	key_hook(int key, t_cub3d *game)
 {
-	/*
-	**	Creer les fcts rotate et moove associees au mouvement et rotation de camera
-	**
-	*/
 	if (key == ESC)
 		mlx_loop_end(game->mlx);
-	// if (key == W)
-	// 	move(game, ...);
-	// else if (key == S)
-	// 	move(game, ...);
-	// else if (key == A)
-	// 	move(game, ...);
-	// else if (key == D)
-	// 	move(game, ...);
-	// else if (key == RIGHT)
-	// 	rotate_player(&game->player, game->player.rot);
-	// else if (key == LEFT)
-	// 	rotate_player(&game->player, game->player.rot * (-1));
+	if (key == W)
+		move(game, game->player.dir);
+	else if (key == S)
+		move(game, rotate(game->player.dir, H));
+	else if (key == A)
+		move(game, rotate(game->player.dir, H / 2 * (-1)));
+	else if (key == D)
+		move(game, rotate(game->player.dir, H / 2));
+	else if (key == RIGHT)
+		rotate_player(&game->player, game->player.rot);
+	else if (key == LEFT)
+		rotate_player(&game->player, game->player.rot * (-1));
 	else
 		return (1);
-	
-	// raycasting(game);
+	raycasting(game);
 	return (0);
 }
 

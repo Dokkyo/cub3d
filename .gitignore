@@ -1,5 +1,5 @@
 **/*.o
 objs
-**/.out
+*.out
 **/.vscode
 libft.a
