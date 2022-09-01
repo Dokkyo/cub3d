@@ -45,7 +45,7 @@ static void	init_player(t_player *player)
 	player->mov = MOVEMENT_UNIT;
 }
 
-void	init_cub3d(t_cub3d *game)
+void	init_cub3d(t_cub3d *game, char *filename)
 {
 	game->win = 0;
 	game->colors.floor.parsed = 0;

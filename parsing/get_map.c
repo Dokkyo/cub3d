@@ -10,6 +10,7 @@ void	get_map(t_cub3d *game, int *fd, char **line, int map_start)
 	int		i;
 	int		j;
 
+	(void)line;
 	map_end = map_start;
 	while ((get_next_line(*fd)) > 0)
 		++map_end;
