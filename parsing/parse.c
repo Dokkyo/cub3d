@@ -58,11 +58,11 @@ void	parse(t_cub3d *game, char *filename)
 			;
 		else if (!ft_strcspn(line, " 01"))
 		{
-			// get_map(game, fd, &line);
+			get_map(game, fd, &line);
 			break ;
 		}
 		else
-			// get_identifiers(t_cub3d *game, char *line);
+			// get_identifiers(game, line);
 		free(line);
 	}
 	close(fd);

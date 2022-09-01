@@ -6,5 +6,7 @@
 */
 void	get_map(t_cub3d game, int fd, char **line)
 {
-	/*[...]*/
+	(void)game;
+	(void)fd;
+	printf("MAP START=%s\n", *line);
 }

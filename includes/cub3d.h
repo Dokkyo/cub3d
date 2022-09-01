@@ -230,7 +230,7 @@ void	check_map(t_cub3d game/*, autre si besoin*/);
 void	get_identifiers(t_cub3d *game, char *line);
 
 //	get_map.c
-void	get_map(t_cub3d game, int fd, char **line);
+void	get_map(t_cub3d *game, int fd, char **line);
 
 //	parse.c
 void	parse(t_cub3d *game, char *filename);
