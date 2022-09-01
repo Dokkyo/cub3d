@@ -17,7 +17,7 @@ static void	check_identifiers(t_cub3d *game)
 		exit_cub3d(game, COLOR_MISSING);
 }
 
-static int	open_map(t_cub3d *game, char *filename)
+int	open_map(t_cub3d *game, char *filename)
 {
 	int	fd;
 
@@ -48,17 +48,20 @@ static void	check_file_extension(t_cub3d *game, char *filename)
 void	parse(t_cub3d *game, char *filename)
 {
 	int		fd;
+	int		map_start;
 	char	*line;
 
+	map_start = 0;
 	check_file_extension(game, filename);
 	fd = open_map(game, filename);
 	while ((line = get_next_line(fd)) > 0)
 	{
+		++map_start;
 		if (!*line)
 			;
 		else if (!ft_strcspn(line, " 01"))
 		{
-			get_map(game, fd, &line);
+			get_map(game, &fd, &line, map_start);
 			break ;
 		}
 		else

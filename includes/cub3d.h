@@ -230,9 +230,10 @@ void	check_map(t_cub3d game/*, autre si besoin*/);
 void	get_identifiers(t_cub3d *game, char *line);
 
 //	get_map.c
-void	get_map(t_cub3d *game, int fd, char **line);
+void	get_map(t_cub3d *game, int fd, char **line, int map_start);
 
 //	parse.c
+int		open_map(t_cub3d *game, char *filename);
 void	parse(t_cub3d *game, char *filename);
 
 /****************************************/
@@ -249,7 +250,7 @@ void	skip_spaces(char **s);
 void	exit_cub3d(t_cub3d *game, int my_errno);
 
 // 	cub3d_init.c
-void	init_cub3d(t_cub3d *game);
+void	init_cub3d(t_cub3d *game, char *filename);
 
 // 	ft_strcmp.c
 int		ft_strcmp(char *s1, char *s2);

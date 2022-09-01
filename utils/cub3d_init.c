@@ -55,6 +55,7 @@ void	init_cub3d(t_cub3d *game)
 	game->images.north.img = 0;
 	game->images.south.img = 0;
 	game->images.cub3d.img = 0;
+	game->filename = filename;
 	init_player(&game->player);
 	init_my_strerror_part_one(game->my_strerror);
 	init_my_strerror_part_two(game->my_strerror);

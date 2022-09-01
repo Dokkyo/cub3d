@@ -47,7 +47,7 @@ int	main(int ac, char **av)
 {
 	t_cub3d	game;
 
-	init_cub3d(&game);
+	init_cub3d(&game, av[1]);
 	if (ac == 2)
 	{
 		parse(&game, av[1]);
