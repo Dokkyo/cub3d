@@ -12,6 +12,7 @@ LIBFT_LIB_PATH = ./libft/libft.a
 SRC_NAME =	main.c \
 			parsing/get_identifiers.c \
 			parsing/parse.c \
+			parsing/get_map.c \
 			utils/array.c \
 			utils/cub3d_init.c \
 			utils/cub3d_exit.c \
