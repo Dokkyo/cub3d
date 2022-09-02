@@ -56,3 +56,4 @@ objs
 **/*.o
 *.out
 libft.a
+mlx_linux/test/mlx-test
