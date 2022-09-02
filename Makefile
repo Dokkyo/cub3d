@@ -4,7 +4,10 @@ PARAMS = -Wall -Wextra -Werror
 
 INC_PATH = includes/
 SRC_PATH = ./
-OBJ_PATH = ./
+OBJ_PATH = objs/
+SUB_OBJ_PATH = objs/parsing/ \
+				objs/utils/ \
+				objs/raycasting
 
 INC_NAME = cub3d.h
 MINILIBX_LIB_PATH = ./mlx_linux/libmlx_Linux.a
@@ -51,6 +54,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
+	@mkdir $(SUB_OBJ_PATH) 2> /dev/null || true
 	@echo "$(RED)[cub3d] :$(DEF) Compiling $@"
 	@$(CC) $(PARAMS) $(INC) -o $@ -c $<
 
