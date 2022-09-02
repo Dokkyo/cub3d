@@ -1,5 +1,19 @@
 #include "../includes/cub3d.h"
 
+static bool	empty_line(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] != '\0')
+	{
+		if (line[i] > 32)
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
 static void	check_identifiers(t_cub3d *game)
 {
 	if (!game->images.est.img
@@ -54,10 +68,10 @@ void	parse(t_cub3d *game, char *filename)
 	map_start = 0;
 	check_file_extension(game, filename);
 	fd = open_map(game, filename);
-	while ((line = get_next_line(fd)) > 0)
+	while ((line = get_next_line(fd)))
 	{
 		++map_start;
-		if (!*line)
+		if (emypt_line(line))
 			;
 		else if (!ft_strcspn(line, " 01"))
 		{
@@ -65,7 +79,9 @@ void	parse(t_cub3d *game, char *filename)
 			break ;
 		}
 		else
+		{
 			get_identifiers(game, line);
+		}
 		free(line);
 	}
 	close(fd);

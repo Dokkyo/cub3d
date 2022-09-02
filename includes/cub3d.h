@@ -74,7 +74,7 @@ typedef enum e_errno
 #define FOV 66.0
 #define ROTATION_UNIT 10
 #define MOVEMENT_UNIT 20
-#define BASE_DEC "0123456789"
+#define BASE_DEC "0123456789 "
 
 /****************************************************/
 /*		All mlx image's useful data in one place	*/
@@ -177,15 +177,6 @@ typedef struct s_wall
 	t_image			*texture;
 }		t_wall;
 
-// /****************************************************/
-// /*		Map Informations structure					*/
-// /****************************************************/
-// typedef struct s_map
-// {
-// 	size_t	nb_line;
-// 	char	*identifier[6];
-// }		t_map;
-
 /********************************************************************/
 /*		Principal Data Structure									*/
 /********************************************************************/
@@ -196,7 +187,6 @@ typedef struct s_cub3d
 	char		*filename;
 	int			fd;
 	char		**map;
-	// t_map		map;
 	t_images	images;
 	t_colors	colors;
 	t_wall		wall;

@@ -9,11 +9,7 @@ int	ft_strcspn(const char *s, const char *rejected)
 
 	len = 0;
 	while (*s && ft_strchr(rejected, *s))
-	{
 		++s;
-		if (*s == 10)
-			return (len);
-	}
 	while (*s && !ft_strchr(rejected, *s))
 	{
 		++s;
@@ -21,3 +17,22 @@ int	ft_strcspn(const char *s, const char *rejected)
 	}
 	return (len);
 }
+
+// int	ft_strcspn(const char *s, const char *rejected)
+// {
+// 	int	len;
+
+// 	len = 0;
+// 	while (*s && ft_strchr(rejected, *s))
+// 	{
+// 		++s;
+// 		// if (*s == 10)
+// 		// 	return (len);
+// 	}
+// 	while (*s && !ft_strchr(rejected, *s))
+// 	{
+// 		++s;
+// 		++len;
+// 	}
+// 	return (len);
+// }

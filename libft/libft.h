@@ -3,7 +3,7 @@
 
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4
+#  define BUFFER_SIZE 142
 # endif
 
 # include <string.h>
