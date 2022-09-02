@@ -22,9 +22,11 @@ static void	get_texture(t_cub3d *game, t_image *image, char *line)
 
 static void	check_color_digits(t_cub3d *game, char **tmp, int i)
 {
+	// printf("digits i = %d\n", i);
+	// printf("digits line = %s\n", tmp[i]);
 	if (ft_strcspn(tmp[i], BASE_DEC))
 	{
-		free_2d_array(tmp); 
+		free_2d_array(tmp);
 		exit_cub3d(game, COLOR_FORMAT);
 	}
 }
@@ -33,7 +35,10 @@ static void	check_color_range(t_cub3d *game, char **tmp, int i)
 {
 	int	color;
 
+	// printf("range i = %d\n", i);
+	// printf("range line = %s\n", tmp[i]);
 	color = ft_atoi(tmp[i]);
+	// printf("color = %d\n", color);
 	if (color < 0 || color > 255)
 	{
 		free_2d_array(tmp);
@@ -59,7 +64,6 @@ static void	get_color(t_cub3d *game, t_color *color, char *line)
 	while (i < 3)
 	{
 		check_color_digits(game, tmp, i);
-		printf("tmp = %s\n", tmp[i]);
 		check_color_range(game, tmp, i);
 		i++;
 	}

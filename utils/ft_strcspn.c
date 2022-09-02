@@ -10,7 +10,7 @@ int	ft_strcspn(const char *s, const char *rejected)
 	len = 0;
 	while (*s && ft_strchr(rejected, *s))
 		++s;
-	while (*s && !ft_strchr(rejected, *s))
+	while (*s && !ft_strchr(rejected, *s) && *s != '\n')
 	{
 		++s;
 		++len;
