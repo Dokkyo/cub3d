@@ -17,7 +17,10 @@ static void	destroy_cub3d(t_cub3d *game)
 		if (game->images.west.img)
 			mlx_destroy_image(game->mlx, game->images.west.img);
 		if (game->mlx)
-			mlx_destroy_image(game->mlx, game->mlx);
+		{
+			mlx_destroy_display(game->mlx);
+			free(game->mlx);
+		}
 		if (game->win)
 			mlx_destroy_window(game->mlx, game->win);
 	}
