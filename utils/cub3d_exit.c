@@ -4,12 +4,22 @@ static void	destroy_cub3d(t_cub3d *game)
 {
 	if (game)
 	{
-		/*
-			free ce qu'on doit free.
-			if (x)
-				free(x);
-			[...]
-		*/
+		if (game->map)
+			free_2d_array(game->map);
+		if (game->images.cub3d.img)
+			mlx_destroy_image(game->mlx, game->images.cub3d.img);
+		if (game->images.north.img)
+			mlx_destroy_image(game->mlx, game->images.north.img);
+		if (game->images.south.img)
+			mlx_destroy_image(game->mlx, game->images.south.img);
+		if (game->images.est.img)
+			mlx_destroy_image(game->mlx, game->images.est.img);
+		if (game->images.west.img)
+			mlx_destroy_image(game->mlx, game->images.west.img);
+		if (game->mlx)
+			mlx_destroy_image(game->mlx, game->mlx);
+		if (game->win)
+			mlx_destroy_window(game->mlx, game->win);
 	}
 }
 
