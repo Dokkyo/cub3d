@@ -11,6 +11,7 @@
 #include <errno.h>
 #include <math.h>
 #include <fcntl.h>
+#include <stdbool.h>
 
 //check path
 //check rgb split sur virgule -> if size return split == 3 check value 0to255.
