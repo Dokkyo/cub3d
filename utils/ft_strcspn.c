@@ -3,7 +3,6 @@
 /*
 ** Return an index of the first character of 's' which is not in 'rejected'
 */
-
 int	ft_strcspn(const char *s, const char *rejected)
 {
 	int	len;

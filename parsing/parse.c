@@ -65,7 +65,7 @@ void	parse(t_cub3d *game, char *filename)
 			break ;
 		}
 		else
-			// get_identifiers(game, line);
+			get_identifiers(game, line);
 		free(line);
 	}
 	close(fd);
@@ -73,5 +73,5 @@ void	parse(t_cub3d *game, char *filename)
 	// check_map(game);
 	get_mlx_window(game);
 	get_mlx_image(game);
-	// raycasting(game);
+	raycasting(game);
 }
