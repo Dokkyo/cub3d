@@ -216,7 +216,8 @@ typedef struct s_cub3d
 /****************************************/
 
 //	check_map.c
-void	check_map(t_cub3d game/*, autre si besoin*/);
+void	check_map(t_cub3d *game);
+void	get_player_game(t_player *player, int x, int y, char c);
 
 //	get_identifiers.c
 void	get_identifiers(t_cub3d *game, char *line);
@@ -238,6 +239,9 @@ void	free_2d_array(char **a);
 void	skip_digits(char **s);
 void	skip_spaces(char **s);
 
+//	check_space.c
+void	check_space(t_cub3d *game, char **map, int row, int col);
+
 // 	cub3d_exit.c
 void	exit_cub3d(t_cub3d *game, int my_errno);
 
@@ -252,6 +256,7 @@ int		ft_strcmp(char *s1, char *s2);
 
 // 	ft_strnspn.c
 int		ft_strcspn(const char *s, const char *rejected);
+int		ft_strcspn2(const char *s, const char *rejected);
 
 //	mlx.c
 void	get_mlx_instance(t_cub3d *game);

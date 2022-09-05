@@ -66,6 +66,7 @@ char			*get_next_line(int fd);
 char			*ft_strjoin_nl(char *s1, char *s2);
 size_t			ft_strlen_nl(char *str);
 char			*ft_strdup_nl(char *s);
-
+int				elems_index(char *s1, char *s2);
+int				elem_index(char *s, char c);
 
 #endif
