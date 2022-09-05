@@ -33,7 +33,7 @@ bool	check_color_range(char *tmp)
 {
 	int	color;
 
-	color = ft_atoi(tmp[i]);
+	color = ft_atoi(tmp);
 	if (color < 0 || color > 255)
 		return (false);
 	return (true);
