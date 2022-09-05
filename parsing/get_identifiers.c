@@ -4,13 +4,16 @@ static void	get_texture(t_cub3d *game, t_image *image, char *line)
 {
 	int		x;
 	int		y;
+	char	*texture;
 
 	if (image->img)
 		exit_cub3d(game, XPM_DUPLICATE);
 	if (*line != ' ')
 		exit_cub3d(game, XPM_FORMAT);
 	skip_spaces(&line);
-	image->img = mlx_xpm_file_to_image(game->mlx, "./textures/eagle.xpm", &x, &y);
+	texture = ft_strdup(line);
+	image->img = mlx_xpm_file_to_image(game->mlx, texture, &x, &y);
+	free(texture);
 	if (image->img == NULL)
 		exit_cub3d(game, XPM_UNAVAILABLE);
 	image->addr = 0;
