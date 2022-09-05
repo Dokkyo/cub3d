@@ -11,7 +11,7 @@ SRCS		=	ft_atoi.c ft_itoa.c ft_putendl_fd.c ft_strlcpy.c ft_tolower.c \
 				ft_strchr.c ft_strnstr.c ft_isascii.c ft_memmove.c ft_strdup.c \
 				ft_strrchr.c ft_isdigit.c ft_memset.c ft_strjoin.c ft_strtrim.c \
 				ft_isprint.c ft_putchar_fd.c ft_strlcat.c ft_substr.c ft_isspace.c \
-				get_next_line.c get_next_line_utils.c
+				get_next_line.c get_next_line_utils.c elem_index.c elems_index.c
 
 OBJS		=	$(SRCS:.c=.o)
 
