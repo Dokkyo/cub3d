@@ -20,30 +20,23 @@ static void	get_texture(t_cub3d *game, t_image *image, char *line)
 		exit_cub3d(game, IMG_ADDR);
 }
 
-static void	check_color_digits(t_cub3d *game, char **tmp, int i)
+bool	check_color_digits(char *tmp)
 {
-	// printf("digits i = %d\n", i);
-	// printf("digits line = %s\n", tmp[i]);
-	if (ft_strcspn(tmp[i], BASE_DEC))
-	{
-		free_2d_array(tmp);
-		exit_cub3d(game, COLOR_FORMAT);
-	}
+	if (ft_isin(tmp, BASE_DEC_SPACE))
+		return (true);
+	else
+		return (false);
+
 }
 
-static void	check_color_range(t_cub3d *game, char **tmp, int i)
+bool	check_color_range(char *tmp)
 {
 	int	color;
 
-	// printf("range i = %d\n", i);
-	// printf("range line = %s\n", tmp[i]);
 	color = ft_atoi(tmp[i]);
-	// printf("color = %d\n", color);
 	if (color < 0 || color > 255)
-	{
-		free_2d_array(tmp);
-		exit_cub3d(game, COLOR_RANGE);
-	}
+		return (false);
+	return (true);
 }
 
 static void	get_color(t_cub3d *game, t_color *color, char *line)
@@ -63,14 +56,27 @@ static void	get_color(t_cub3d *game, t_color *color, char *line)
 	i = 0;
 	while (i < 3)
 	{
-		check_color_digits(game, tmp, i);
-		check_color_range(game, tmp, i);
+
+		if (check_color_digits(tmp[i]) == false)
+		{
+			free_2d_array(tmp);
+			exit_cub3d(game, COLOR_FORMAT);
+		}
+		if (check_color_range(tmp[i]) == false)
+		{
+			free_2d_array(tmp);
+			exit_cub3d(game, COLOR_RANGE);
+		}
 		i++;
 	}
 	color->r = (unsigned char)ft_atoi(tmp[0]);
 	color->g = (unsigned char)ft_atoi(tmp[1]);
 	color->b = (unsigned char)ft_atoi(tmp[2]);
 	color->color = (color->r << 16 | color->g << 8 | color->b);
+	printf("r : %d\n", color->r);
+	printf("g : %d\n", color->g);
+	printf("b : %d\n", color->b);
+	printf("color : %d\n", color->color);
 	color->parsed = 1;
 	free_2d_array(tmp);
 }
