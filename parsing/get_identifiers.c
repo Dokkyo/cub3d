@@ -73,10 +73,6 @@ static void	get_color(t_cub3d *game, t_color *color, char *line)
 	color->g = (unsigned char)ft_atoi(tmp[1]);
 	color->b = (unsigned char)ft_atoi(tmp[2]);
 	color->color = (color->r << 16 | color->g << 8 | color->b);
-	printf("r : %d\n", color->r);
-	printf("g : %d\n", color->g);
-	printf("b : %d\n", color->b);
-	printf("color : %d\n", color->color);
 	color->parsed = 1;
 	free_2d_array(tmp);
 }
