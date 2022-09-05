@@ -74,7 +74,8 @@ typedef enum e_errno
 #define FOV 66.0
 #define ROTATION_UNIT 10
 #define MOVEMENT_UNIT 20
-#define BASE_DEC "0123456789 "
+#define BASE_DEC "0123456789"
+#define BASE_DEC_SPACE "0123456789\t\n\r\v\f "
 
 /****************************************************/
 /*		All mlx image's useful data in one place	*/
@@ -242,6 +243,9 @@ void	exit_cub3d(t_cub3d *game, int my_errno);
 
 // 	cub3d_init.c
 void	init_cub3d(t_cub3d *game, char *filename);
+
+// 	ft_isin.c
+bool	ft_isin(const char *s, const char *accepted);
 
 // 	ft_strcmp.c
 int		ft_strcmp(char *s1, char *s2);

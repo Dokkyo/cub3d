@@ -19,6 +19,7 @@ SRC_NAME =	main.c \
 			utils/array.c \
 			utils/cub3d_init.c \
 			utils/cub3d_exit.c \
+			utils/ft_isin.c \
 			utils/ft_strcmp.c \
 			utils/ft_strcspn.c \
 			utils/mlx.c \
