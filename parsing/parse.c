@@ -71,7 +71,7 @@ void	parse(t_cub3d *game, char *filename)
 	while ((line = get_next_line(fd)))
 	{
 		++map_start;
-		if (emypt_line(line))
+		if (empty_line(line))
 			;
 		else if (!ft_strcspn(line, " 01"))
 		{
