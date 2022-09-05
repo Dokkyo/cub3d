@@ -9,11 +9,15 @@ void	get_map(t_cub3d *game, int *fd, char **line, int map_start)
 	int		map_end;
 	int		i;
 	int		j;
+	char	*trash;
 
 	(void)line;
 	map_end = map_start;
-	while ((get_next_line(*fd)) > 0)
+	while ((trash = get_next_line(*fd)) > 0)
+	{
 		++map_end;
+		free(trash);
+	}
 	close(*fd);
 	game->map = malloc(sizeof(char *) * (map_end - map_start + 1));
 	if(!game->map)
@@ -21,7 +25,10 @@ void	get_map(t_cub3d *game, int *fd, char **line, int map_start)
 	*fd = open_map(game, game->filename);
 	i = -1;
 	while (++i < map_start - 1)
-		get_next_line(*fd);
+	{
+		trash = get_next_line(*fd);
+		free(trash);
+	}
 	j = 0;
 	while(i <= map_end)
 	{
