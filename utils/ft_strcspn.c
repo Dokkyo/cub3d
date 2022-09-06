@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcspn.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/06 15:11:23 by bifrah            #+#    #+#             */
+/*   Updated: 2022/09/06 15:11:24 by bifrah           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft/libft.h"
 
 /*
@@ -18,7 +30,6 @@ int	ft_strcspn(const char *s, const char *rejected)
 	return (len);
 }
 
-
 int	ft_strcspn2(const char *s, const char *rejected)
 {
 	int	len;
@@ -33,21 +44,3 @@ int	ft_strcspn2(const char *s, const char *rejected)
 	}
 	return (len);
 }
-// int	ft_strcspn(const char *s, const char *rejected)
-// {
-// 	int	len;
-
-// 	len = 0;
-// 	while (*s && ft_strchr(rejected, *s))
-// 	{
-// 		++s;
-// 		// if (*s == 10)
-// 		// 	return (len);
-// 	}
-// 	while (*s && !ft_strchr(rejected, *s))
-// 	{
-// 		++s;
-// 		++len;
-// 	}
-// 	return (len);
-// }

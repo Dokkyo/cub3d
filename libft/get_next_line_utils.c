@@ -1,57 +1,55 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/11 02:29:02 by bifrah            #+#    #+#             */
+/*   Updated: 2022/09/06 14:36:15 by bifrah           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-char	*ft_strjoin_nl(char *s1, char *s2)
+unsigned int	ft_strlen(const char *str)
 {
-	char	*str;
-	size_t	len;
-	int		i;
-
-	if (!s2)
-		return (NULL);
-	len = ft_strlen_nl(s1) + ft_strlen_nl(s2);
-	str = malloc(sizeof(char) * (len + 2));
-	if (!str)
-		return (NULL);
-	str[len + 1] = 0;
-	i = -1;
-	while (s1[++i])
-		str[i] = s1[i];
-	free(s1);
-	len = 0;
-	while (s2[len] && s2[len] != '\n')
-		str[i++] = s2[len++];
-	if (s2[len] == '\n')
-		str[i] = s2[len];
-	else
-		str[i] = 0;
-	return (str);
-}
-
-size_t	ft_strlen_nl(char *str)
-{
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (str[i] && str[i] != '\n')
-		++i;
+	while (str[i])
+		i++;
 	return (i);
 }
 
-char	*ft_strdup_nl(char *s)
+int	find_n(const char *s)
 {
-	char	*str;
-	size_t	i;
+	unsigned int	i;
 
-	i = ft_strlen_nl(s);
-	str = malloc(sizeof(*str) * (i + 1));
-	if (!str)
-		return (NULL);
 	i = 0;
 	while (s[i])
 	{
-		str[i] = s[i];
+		if (s[i] == '\n')
+			return (i);
 		i++;
 	}
-	str[i] = 0;
-	return (str);
+	return (-1);
+}
+
+char	*ft_strdup(const char *src)
+{
+	char	*dup;
+	int		i;
+
+	dup = (char *)malloc(sizeof(char) * ft_strlen(src) + 1);
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (src[i])
+	{
+		dup[i] = src[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
 }

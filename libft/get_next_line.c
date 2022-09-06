@@ -1,68 +1,115 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/11 02:28:57 by bifrah            #+#    #+#             */
+/*   Updated: 2022/09/06 14:31:25 by bifrah           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int	lookfor_nl(char *line)
+char	*first_call(char **line, char *stat)
 {
-	int	i;
+	unsigned int	j;
+	int				i;
+	char			*tmp;
 
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] == '\n')
-			return (1);
-		i++;
-	}
-	return (0);
+	i = find_n(*line);
+	tmp = ft_strdup(*line);
+	line[0][i + 1] = '\0';
+	i++;
+	j = 0;
+	while (tmp[i])
+		stat[j++] = tmp[i++];
+	stat[j] = '\0';
+	free(tmp);
+	return (*line);
 }
 
-void	refresh_buf(char *b)
+char	*stat_with_n(char *line, char *stat)
 {
-	size_t	j;
-	size_t	i;
+	unsigned int	i;
+	unsigned int	j;
+	char			*tmp;
 
-	i = 0;
-	j = ft_strlen_nl(b);
-	if (b[j] == '\n')
-		++j;
-	i = 0;
-	while (b[i] != '\0')
-		b[i++] = b[j++];
-	while (b[i] != '\0')
-		b[i++] = 0;
+	j = 0;
+	line = ft_strjoin(line, stat);
+	i = find_n(line);
+	tmp = ft_strdup(stat);
+	i++;
+	line[i++] = '\0';
+	i--;
+	while (tmp[i])
+		stat[j++] = tmp[i++];
+	stat[j] = '\0';
+	free(tmp);
+	return (line);
+}
+
+char	*ft_last_line(char *line, char *stat)
+{
+	if (line == NULL)
+	{
+		stat[0] = '\0';
+		return (NULL);
+	}
+	else
+	{
+		if (find_n(line) == -1)
+			return (line);
+		else
+		{
+			stat[0] = '\0';
+			line[find_n(line)] = '\0';
+			return (line);
+		}
+	}
+	return (line);
+}
+
+char	*read_me_please(int fd, char *buff, char *line, char *stat)
+{
+	int	ret;
+
+	ret = 42;
+	while (ret > 0 && find_n(line) == -1)
+	{
+		ret = read(fd, buff, BUFFER_SIZE);
+		buff[ret] = '\0';
+		line = ft_strjoin(line, buff);
+	}
+	if (ret == 0 && ft_strlen(stat) != 0)
+		line = ft_last_line(line, stat);
+	else if (find_n(line) != -1)
+		line = first_call(&line, stat);
+	else if (ft_strlen(line) == 0)
+		line = NULL;
+	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	buf[BUFFER_SIZE + 1];
-	int			rbytes;
-	char		*line;
+	char			buff[BUFFER_SIZE + 1];
+	static char		stat[BUFFER_SIZE];
+	char			*line;
 
-	if (BUFFER_SIZE <= 0 || read(fd, buf, 0) == -1)
+	if (read(fd, buff, 0) == -1 || BUFFER_SIZE < 1)
 		return (NULL);
-	rbytes = 1;
-	line = ft_strdup_nl("");
-	line = ft_strjoin_nl(line, buf);
-	while (rbytes > 0 && !lookfor_nl(buf))
+	line = ft_strdup("");
+	if (stat[0])
 	{
-		rbytes = read(fd, buf, BUFFER_SIZE);
-		if (rbytes)
+		if (find_n(stat) != -1)
 		{
-			buf[rbytes] = 0;
-			line = ft_strjoin_nl(line, buf);
-		}
-		else if (rbytes == -1)
-			return (NULL);
-		else if (rbytes == 0 && buf[0] != 0)
-		{
-			refresh_buf(buf);
+			line = stat_with_n(line, stat);
 			return (line);
 		}
-		else
-		{
-			free(line);
-			line = NULL;
-			return (line);
-		}
+		line = ft_strjoin(line, stat);
+		stat[0] = '\0';
 	}
-	refresh_buf(buf);
+	line = read_me_please(fd, buff, line, stat);
 	return (line);
 }
