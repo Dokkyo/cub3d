@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_identifiers.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/06 14:58:03 by bifrah            #+#    #+#             */
+/*   Updated: 2022/09/06 15:09:56 by bifrah           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 static void	get_texture(t_cub3d *game, t_image *image, char *line)
@@ -18,27 +30,34 @@ static void	get_texture(t_cub3d *game, t_image *image, char *line)
 		exit_cub3d(game, XPM_UNAVAILABLE);
 	image->addr = 0;
 	image->addr = (int *)mlx_get_data_addr(image->img,
-		&image->bpp, &image->ll, &image->endian);
+			&image->bpp, &image->ll, &image->endian);
 	if (image->addr == 0)
 		exit_cub3d(game, IMG_ADDR);
 }
 
-bool	check_color_digits(char *tmp)
+bool	check_color_digits(char *tmp, t_cub3d *game, char **array)
 {
 	if (ft_isin(tmp, BASE_DEC_SPACE))
 		return (true);
 	else
+	{
+		free_2d_array(array);
+		exit_cub3d(game, COLOR_FORMAT);
 		return (false);
-
+	}
 }
 
-bool	check_color_range(char *tmp)
+bool	check_color_range(char *tmp, t_cub3d *game, char **array)
 {
 	int	color;
 
 	color = ft_atoi(tmp);
 	if (color < 0 || color > 255)
+	{
+		free_2d_array(array);
+		exit_cub3d(game, COLOR_RANGE);
 		return (false);
+	}
 	return (true);
 }
 
@@ -59,17 +78,8 @@ static void	get_color(t_cub3d *game, t_color *color, char *line)
 	i = 0;
 	while (i < 3)
 	{
-
-		if (check_color_digits(tmp[i]) == false)
-		{
-			free_2d_array(tmp);
-			exit_cub3d(game, COLOR_FORMAT);
-		}
-		if (check_color_range(tmp[i]) == false)
-		{
-			free_2d_array(tmp);
-			exit_cub3d(game, COLOR_RANGE);
-		}
+		check_color_digits(tmp[i], game, tmp);
+		check_color_range(tmp[i], game, tmp);
 		i++;
 	}
 	color->r = (unsigned char)ft_atoi(tmp[0]);
@@ -82,7 +92,6 @@ static void	get_color(t_cub3d *game, t_color *color, char *line)
 
 void	get_identifiers(t_cub3d *game, char *line)
 {
-
 	if (line[0] == 'F')
 		get_color(game, &game->colors.floor, line + 1);
 	else if (line[0] == 'C')
