@@ -68,8 +68,7 @@ void	parse(t_cub3d *game, char *filename)
 	map_start = 0;
 	check_file_extension(game, filename);
 	fd = open_map(game, filename);
-	line = get_next_line(fd);
-	while (line)
+	while ((line = get_next_line(fd)))
 	{
 		++map_start;
 		if (empty_line(line))
@@ -77,13 +76,17 @@ void	parse(t_cub3d *game, char *filename)
 		else if (!ft_strcspn(line, " 01"))
 		{
 			get_map(game, &fd, &line, map_start);
+			free(line);
 			break ;
 		}
 		else
 			get_identifiers(game, line);
 		free(line);
-		line = get_next_line(fd);
 	}
-	return (close(fd), check_identifiers(game), check_map(game),
-		get_mlx_window(game), get_mlx_image(game), raycasting(game));
+	close(fd);
+	check_identifiers(game);
+	check_map(game);
+	get_mlx_window(game);
+	get_mlx_image(game);
+	raycasting(game);
 }

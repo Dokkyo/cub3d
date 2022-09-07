@@ -1,29 +1,17 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/06 14:18:53 by bifrah            #+#    #+#             */
-/*   Updated: 2022/09/06 14:18:53 by bifrah           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../mlx_linux/mlx.h"
-# include "X11/X.h"
-# include "../libft/libft.h"
+#include "../mlx_linux/mlx.h"
+#include "X11/X.h"
+#include "../libft/libft.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <errno.h>
-# include <math.h>
-# include <fcntl.h>
-# include <stdbool.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <math.h>
+#include <fcntl.h>
+#include <stdbool.h>
 
 //check path
 //check rgb split sur virgule -> if size return split == 3 check value 0to255.
@@ -70,24 +58,24 @@ typedef enum e_errno
 /****************************************************/
 /*		Keycodes									*/
 /****************************************************/
-# define W 119
-# define A 97
-# define S 115
-# define D 100
-# define ESC 65307
-# define LEFT 65361
-# define RIGHT 65363
+#define W 119
+#define A 97
+#define S 115
+#define D 100
+#define ESC 65307
+#define LEFT 65361
+#define RIGHT 65363
 
 /****************************************************/
 /*		Config for the player						*/
 /****************************************************/
-# define CUB_SIZE 64
-# define WIN_SIZE 1024
-# define FOV 66.0
-# define ROTATION_UNIT 10
-# define MOVEMENT_UNIT 20
-# define BASE_DEC "0123456789"
-# define BASE_DEC_SPACE "0123456789\t\n\r\v\f "
+#define CUB_SIZE 64
+#define WIN_SIZE 1024
+#define FOV 66.0
+#define ROTATION_UNIT 10
+#define MOVEMENT_UNIT 20
+#define BASE_DEC "0123456789"
+#define BASE_DEC_SPACE "0123456789\t\n\r\v\f "
 
 /****************************************************/
 /*		All mlx image's useful data in one place	*/
@@ -209,6 +197,7 @@ typedef struct s_cub3d
 
 }		t_cub3d;
 
+
 /*	Ajoutez les protos de cette maniere :
 **
 **	*************************************
@@ -293,8 +282,8 @@ void	move(t_cub3d *game, double dir);
 
 //	raycasting.c
 t_int_vector	get_step(double ray);
-void	dda(t_cub3d *game);
-void	raycasting(t_cub3d *game);
+void			dda(t_cub3d *game);
+void			raycasting(t_cub3d *game);
 
 //	rotate.c
 double	rotate(double ray, double angle);
@@ -304,3 +293,20 @@ void	rotate_player(t_player *player, double angle);
 // int		ft_strcmp(char *s1, char *s2);
 
 #endif
+
+/*
+*
+*	Lors du parsing de la map :
+*	- Creer un int (compteur)
+*	- Pour le remplir, il suffirait de checket grace a un tableau de chaine de caractere (char**) qui contiendrait chaque identifieur.
+*		Lors du scan du fichier, des qu'on rencontre un identifieur, ajouter +1 au compteur.
+*		Save cette ligne pour checker son format et la validite par la suite.
+*
+*	Quand le compteur arrive a 6, on n'est cense rencontrer que des isspace (ou des /n) ou des 1/0 (debut de map).
+*
+*	Si l'on rencontre tout autre caractere (excepte isspace) avant un 1/0 : map invalide.
+*	Lors de la rencontre d'un 1 ou d'un 0, la map commence.
+*		Normalement, La premiere et deniere ligne sont seulement des 1 (pour une map ferme).
+*		Le premier et dernier octet de chaque ligne contient soit un isspace soit un 1.
+*
+*/
