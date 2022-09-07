@@ -70,7 +70,7 @@ clean:
 fclean: clean
 	@make -C libft fclean
 	@make -C mlx_linux clean
-	@rm -rf $(NAME)
+	@rm -rf $(NAME) $(OBJ_PATH)
 	@echo "$(RED)[cub3d] : $(DEF)Full Cleaning               $(GRN)[OK]$(DEF)"           $(GRN)[OK]$(DEF)"
 
 logo:

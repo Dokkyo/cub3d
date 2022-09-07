@@ -5,8 +5,8 @@ SO ./textures/Scoobie.xpm
 EA ./textures/Saw.xpm
 WE ./textures/Scream.xpm
 
-F 0  , 255 , 0
-C 0 , 0 , 200
+F 142  , 142 , 142
+C 83 , 15 , 10
 
 1111111111111111
 1010000000000001
