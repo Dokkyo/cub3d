@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_identifiers.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/07 15:39:04 by bifrah            #+#    #+#             */
+/*   Updated: 2022/09/07 15:55:43 by bifrah           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 static void	get_texture(t_cub3d *game, t_image *image, char *line)
@@ -18,28 +30,9 @@ static void	get_texture(t_cub3d *game, t_image *image, char *line)
 		exit_cub3d(game, XPM_UNAVAILABLE);
 	image->addr = 0;
 	image->addr = (int *)mlx_get_data_addr(image->img,
-		&image->bpp, &image->ll, &image->endian);
+			&image->bpp, &image->ll, &image->endian);
 	if (image->addr == 0)
 		exit_cub3d(game, IMG_ADDR);
-}
-
-bool	check_color_digits(char *tmp)
-{
-	if (ft_isin(tmp, BASE_DEC_SPACE))
-		return (true);
-	else
-		return (false);
-
-}
-
-bool	check_color_range(char *tmp)
-{
-	int	color;
-
-	color = ft_atoi(tmp);
-	if (color < 0 || color > 255)
-		return (false);
-	return (true);
 }
 
 static void	get_color(t_cub3d *game, t_color *color, char *line)
@@ -59,7 +52,6 @@ static void	get_color(t_cub3d *game, t_color *color, char *line)
 	i = 0;
 	while (i < 3)
 	{
-
 		if (check_color_digits(tmp[i]) == false)
 		{
 			free_2d_array(tmp);
@@ -82,7 +74,6 @@ static void	get_color(t_cub3d *game, t_color *color, char *line)
 
 void	get_identifiers(t_cub3d *game, char *line)
 {
-
 	if (line[0] == 'F')
 		get_color(game, &game->colors.floor, line + 1);
 	else if (line[0] == 'C')

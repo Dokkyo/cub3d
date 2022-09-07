@@ -1,14 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/07 15:39:09 by bifrah            #+#    #+#             */
+/*   Updated: 2022/09/07 15:47:37 by bifrah           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 /*
 **	Recoit la struct principale, + autre si besoin
-**	Check si la map est bien formate (ne s'occupe pas de checker le fichier .cub ni de checker si les identiffiers sont correct)
-**	Dans la struct map, il est cense avoir un char** contenant chaques lignes a partir du debut de la map "space01" jusqu'a EOF
+**	Check si la map est bien formate (ne s'occupe pas de checker le fichier
+**	.cub ni de checker si les identiffiers sont correct)
+**	Dans la struct map, il est cense avoir un char** contenant chaques lignes
+**	a partir du debut de la map "space01" jusqu'a EOF
 */
-// void	check_map(t_cub3d game/*, autre si besoin*/)
-// {
-// 	/*[...]*/
-// }
 
 static void	check_undefined_cells(t_cub3d *game)
 {

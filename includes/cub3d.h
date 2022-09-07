@@ -226,6 +226,11 @@ typedef struct s_cub3d
 /*				parsing					*/
 /****************************************/
 
+
+//	check_identifiers.c
+bool			check_color_digits(char *tmp);
+bool			check_color_range(char *tmp);
+
 //	check_map.c
 void			check_map(t_cub3d *game);
 void			get_player_game(t_player *player, int x, int y, char c);
@@ -234,11 +239,14 @@ void			get_player_game(t_player *player, int x, int y, char c);
 void			get_identifiers(t_cub3d *game, char *line);
 
 //	get_map.c
-void			get_map(t_cub3d *game, int *fd, char **line, int map_start);
+void			get_map(t_cub3d *game, int *fd, int map_start);
 
 //	parse.c
 int				open_map(t_cub3d *game, char *filename);
 void			parse(t_cub3d *game, char *filename);
+
+//	utils_parsing.c
+void			check_get_mlx_and_raytrace(t_cub3d *game, int *fd);
 
 /****************************************/
 /*				utils					*/
