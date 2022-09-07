@@ -226,7 +226,6 @@ typedef struct s_cub3d
 /*				parsing					*/
 /****************************************/
 
-
 //	check_identifiers.c
 bool			check_color_digits(char *tmp);
 bool			check_color_range(char *tmp);
