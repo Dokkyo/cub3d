@@ -6,7 +6,7 @@
 /*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:39:04 by bifrah            #+#    #+#             */
-/*   Updated: 2022/09/07 16:19:00 by bifrah           ###   ########.fr       */
+/*   Updated: 2022/09/07 16:33:12 by bifrah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,8 @@ static void	get_color(t_cub3d *game, t_color *color, char *line)
 	i = 0;
 	while (i < 3)
 	{
-		if (check_color_digits(tmp[i]) == false)
-		{
-			free_2d_array(tmp);
-			exit_cub3d(game, COLOR_FORMAT);
-		}
-		if (check_color_range(tmp[i]) == false)
-		{
-			free_2d_array(tmp);
-			exit_cub3d(game, COLOR_RANGE);
-		}
+		check_clr_digits(tmp[i], game, &tmp);
+		check_clr_range(tmp[i], game, &tmp);
 		i++;
 	}
 	fill_collor(color, tmp);

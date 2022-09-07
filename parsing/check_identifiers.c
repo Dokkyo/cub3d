@@ -6,27 +6,35 @@
 /*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:39:04 by bifrah            #+#    #+#             */
-/*   Updated: 2022/09/07 16:19:35 by bifrah           ###   ########.fr       */
+/*   Updated: 2022/09/07 16:32:58 by bifrah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-bool	check_color_digits(char *tmp)
+bool	check_clr_digits(char *tmp, t_cub3d *game, char ***array)
 {
 	if (ft_isin(tmp, BASE_DEC_SPACE))
 		return (true);
 	else
+	{
+		free_2d_array(array[0]);
+		exit_cub3d(game, COLOR_FORMAT);
 		return (false);
+	}
 }
 
-bool	check_color_range(char *tmp)
+bool	check_clr_range(char *tmp, t_cub3d *game, char ***array)
 {
 	int	color;
 
 	color = ft_atoi(tmp);
 	if (color < 0 || color > 255)
+	{
+		free_2d_array(array[0]);
+		exit_cub3d(game, COLOR_RANGE);
 		return (false);
+	}
 	return (true);
 }
 

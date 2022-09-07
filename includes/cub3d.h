@@ -227,8 +227,8 @@ typedef struct s_cub3d
 /****************************************/
 
 //	check_identifiers.c
-bool			check_color_digits(char *tmp);
-bool			check_color_range(char *tmp);
+bool			check_clr_digits(char *tmp, t_cub3d *game, char ***array);
+bool			check_clr_range(char *tmp, t_cub3d *game, char ***array);
 
 //	check_map.c
 void			check_map(t_cub3d *game);
