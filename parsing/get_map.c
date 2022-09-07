@@ -9,6 +9,7 @@
 void	get_map(t_cub3d *game, int *fd, char **line, int map_start)
 {
 	int		map_end;
+	char	*trash;
 	int		i;
 	int		j;
 
