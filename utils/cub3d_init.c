@@ -6,7 +6,7 @@
 /*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:37:09 by bifrah            #+#    #+#             */
-/*   Updated: 2022/09/07 18:55:15 by bifrah           ###   ########.fr       */
+/*   Updated: 2022/09/07 19:40:34 by bifrah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ void	init_cub3d(t_cub3d *game, char *filename)
 	game->win = NULL;
 	game->colors.floor.parsed = 0;
 	game->colors.ceiling.parsed = 0;
-	game->images.est.img = 0;
-	game->images.west.img = 0;
-	game->images.north.img = 0;
-	game->images.south.img = 0;
-	game->images.cub3d.img = 0;
+	game->images.est.img = NULL;
+	game->images.west.img = NULL;
+	game->images.north.img = NULL;
+	game->images.south.img = NULL;
+	game->images.cub3d.img = NULL;
 	game->filename = filename;
 	init_player(&game->player);
 	init_my_strerror_part_one(game->my_strerror);

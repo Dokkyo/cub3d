@@ -33,6 +33,7 @@
 /****************************************************/
 typedef enum e_errno
 {
+	EXIT,
 	ZERO,
 	MAP_MALLOC,
 	MAP_ENOENT,

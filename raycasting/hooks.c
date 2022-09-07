@@ -6,7 +6,7 @@
 /*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:36:09 by bifrah            #+#    #+#             */
-/*   Updated: 2022/09/07 16:36:09 by bifrah           ###   ########.fr       */
+/*   Updated: 2022/09/07 19:52:11 by bifrah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ static	int	render(t_cub3d *game)
 static int	key_hook(int key, t_cub3d *game)
 {
 	if (key == ESC)
+	{
 		mlx_loop_end(game->mlx);
+		exit_cub3d(game, EXIT);
+	}
 	if (key == W)
 		move(game, game->player.dir);
 	else if (key == S)
