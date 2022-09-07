@@ -18,7 +18,6 @@ SRC_NAME =	main.c \
 			parsing/parse.c \
 			parsing/get_map.c \
 			parsing/check_map.c \
-			parsing/utils_parsing.c \
 			utils/array.c \
 			utils/check_space.c \
 			utils/cub3d_init.c \

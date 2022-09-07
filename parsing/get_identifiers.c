@@ -6,7 +6,7 @@
 /*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:39:04 by bifrah            #+#    #+#             */
-/*   Updated: 2022/09/07 15:55:43 by bifrah           ###   ########.fr       */
+/*   Updated: 2022/09/07 16:19:00 by bifrah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@ static void	get_texture(t_cub3d *game, t_image *image, char *line)
 		exit_cub3d(game, IMG_ADDR);
 }
 
+static void	fill_collor(t_color *color, char **tmp)
+{
+	color->r = (unsigned char)ft_atoi(tmp[0]);
+	color->g = (unsigned char)ft_atoi(tmp[1]);
+	color->b = (unsigned char)ft_atoi(tmp[2]);
+	color->color = (color->r << 16 | color->g << 8 | color->b);
+	color->parsed = 1;
+}
+
 static void	get_color(t_cub3d *game, t_color *color, char *line)
 {
 	char	**tmp;
@@ -43,7 +52,6 @@ static void	get_color(t_cub3d *game, t_color *color, char *line)
 	if (color->parsed)
 		exit_cub3d(game, COLOR_DUPLICATE);
 	skip_spaces(&line);
-	tmp = 0;
 	tmp = ft_split(line, ',');
 	if (!tmp)
 		exit_cub3d(game, COLOR_MALLOC);
@@ -64,11 +72,7 @@ static void	get_color(t_cub3d *game, t_color *color, char *line)
 		}
 		i++;
 	}
-	color->r = (unsigned char)ft_atoi(tmp[0]);
-	color->g = (unsigned char)ft_atoi(tmp[1]);
-	color->b = (unsigned char)ft_atoi(tmp[2]);
-	color->color = (color->r << 16 | color->g << 8 | color->b);
-	color->parsed = 1;
+	fill_collor(color, tmp);
 	free_2d_array(tmp);
 }
 
