@@ -6,7 +6,7 @@
 /*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:36:44 by bifrah            #+#    #+#             */
-/*   Updated: 2022/09/07 16:36:45 by bifrah           ###   ########.fr       */
+/*   Updated: 2022/09/07 18:53:02 by bifrah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	get_mlx_instance(t_cub3d *game)
 {
-	game->mlx = 0;
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		exit_cub3d(game, MLX_INIT);
@@ -22,7 +21,6 @@ void	get_mlx_instance(t_cub3d *game)
 
 void	get_mlx_window(t_cub3d *game)
 {
-	game->win = 0;
 	game->win = mlx_new_window(game->mlx, WIN_SIZE, WIN_SIZE, "Cub3D");
 	if (!game->win)
 		exit_cub3d(game, MLX_WINDOW);

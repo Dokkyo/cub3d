@@ -6,7 +6,7 @@
 /*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:37:09 by bifrah            #+#    #+#             */
-/*   Updated: 2022/09/07 18:48:05 by bifrah           ###   ########.fr       */
+/*   Updated: 2022/09/07 18:55:15 by bifrah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ static void	init_player(t_player *player)
 void	init_cub3d(t_cub3d *game, char *filename)
 {
 	game->map = NULL;
-	game->win = 0;
+	game->mlx = NULL;
+	game->win = NULL;
 	game->colors.floor.parsed = 0;
 	game->colors.ceiling.parsed = 0;
 	game->images.est.img = 0;
