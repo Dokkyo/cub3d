@@ -77,7 +77,6 @@ void	parse(t_cub3d *game, char *filename)
 		else if (!ft_strcspn(line, " 01"))
 		{
 			get_map(game, &fd, &line, map_start);
-			free(line);
 			break ;
 		}
 		else
