@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
+/*   By: naben-za <naben-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:39:09 by bifrah            #+#    #+#             */
-/*   Updated: 2022/09/07 15:47:37 by bifrah           ###   ########.fr       */
+/*   Updated: 2022/09/08 19:37:07 by naben-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	check_undefined_cells(t_cub3d *game)
 	i = 0;
 	while (game->map[i])
 	{
-		if (ft_strcspn2(game->map[i], " 01NSEW\n"))
+		if (ft_strcspn(game->map[i], " 01NSEW"))
 			exit_cub3d(game, MAP_UNDEFINED);
 		i++;
 	}
@@ -65,15 +65,15 @@ static void	check_map_closed(t_cub3d *game, char **map)
 	int	j;
 
 	i = length_2d_array(map);
-	if (ft_strcspn2(map[0], " 1\n"))
+	if (ft_strcspn(map[0], " 1"))
 		exit_cub3d(game, MAP_NOT_CLOSE);
-	if (ft_strcspn2(map[i - 1], " 1\n"))
+	if (ft_strcspn(map[i - 1], " 1"))
 		exit_cub3d(game, MAP_NOT_CLOSE);
 	while (--i)
 	{
 		j = ft_strlen(map[i]) - 1;
-		if (elem_index(" 1\n", map[i][0]) == -1
-			|| elem_index(" 1\n", map[i][j]) == -1)
+		if (elem_index(" 1", map[i][0]) == -1
+			|| elem_index(" 1", map[i][j]) == -1)
 			exit_cub3d(game, MAP_NOT_CLOSE);
 		while (--j)
 		{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
+/*   By: naben-za <naben-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:33:38 by bifrah            #+#    #+#             */
-/*   Updated: 2022/09/07 15:47:08 by bifrah           ###   ########.fr       */
+/*   Updated: 2022/09/08 19:37:27 by naben-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	parse(t_cub3d *game, char *filename)
 		++map_start;
 		if (empty_line(line))
 			;
-		else if (!ft_strcspn(line, " 01"))
+		else if (!ft_strcspn(line, " 01\n"))
 		{
 			get_map(game, &fd, map_start);
 			free(line);

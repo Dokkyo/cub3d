@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
+/*   By: naben-za <naben-za@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:32:35 by bifrah            #+#    #+#             */
-/*   Updated: 2022/09/07 15:33:31 by bifrah           ###   ########.fr       */
+/*   Updated: 2022/09/08 19:37:12 by naben-za         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	get_map(t_cub3d *game, int *fd, int map_start)
 	map_end = map_start;
 	go_to_map_end(fd, &map_end);
 	close(*fd);
-	game->map = malloc(sizeof(char *) * (map_end - map_start + 1));
+	game->map = malloc(sizeof(char *) * (map_end - map_start + 2));
 	if (!game->map)
 		exit_cub3d(game, MAP_MALLOC);
 	*fd = open_map(game, game->filename);
@@ -52,10 +52,13 @@ void	get_map(t_cub3d *game, int *fd, int map_start)
 		free(trash);
 	}
 	j = 0;
-	while (i <= map_end)
+	while (i < map_end)
 	{
-		game->map[j] = get_next_line(*fd);
+		trash = get_next_line(*fd);
+		game->map[j] = ft_strdup(trash);
+		free(trash);
 		++j;
 		++i;
 	}
+	game->map[j] = NULL;
 }
