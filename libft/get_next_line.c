@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/09 11:59:28 by bifrah            #+#    #+#             */
+/*   Updated: 2022/09/09 12:00:21 by bifrah           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 int	lookfor_nl(char *line)
@@ -30,39 +42,43 @@ void	refresh_buf(char *b)
 		b[i++] = 0;
 }
 
-char	*get_next_line(int fd)
+char	*win_line_shameless(char *buf, char **line, int *fd)
 {
-	static char	buf[BUFFER_SIZE + 1];
-	int			rbytes;
-	char		*line;
+	int	rbytes;
 
-	if (BUFFER_SIZE <= 0 || read(fd, buf, 0) == -1)
-		return (NULL);
 	rbytes = 1;
-	line = ft_strdup_nl("");
-	line = ft_strjoin_nl(line, buf);
 	while (rbytes > 0 && !lookfor_nl(buf))
 	{
-		rbytes = read(fd, buf, BUFFER_SIZE);
+		rbytes = read(*fd, buf, BUFFER_SIZE);
 		if (rbytes)
 		{
 			buf[rbytes] = 0;
-			line = ft_strjoin_nl(line, buf);
+			line[0] = ft_strjoin_nl(line[0], buf);
 		}
 		else if (rbytes == -1)
 			return (NULL);
 		else if (rbytes == 0 && buf[0] != 0)
-		{
-			refresh_buf(buf);
-			return (line);
-		}
+			return (refresh_buf(buf), line[0]);
 		else
 		{
-			free(line);
-			line = NULL;
-			return (line);
+			free(line[0]);
+			line[0] = NULL;
+			return (line[0]);
 		}
 	}
+	return (line[0]);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	buf[BUFFER_SIZE + 1];
+	char		*line;
+
+	if (BUFFER_SIZE <= 0 || read(fd, buf, 0) == -1)
+		return (NULL);
+	line = ft_strdup_nl("");
+	line = ft_strjoin_nl(line, buf);
+	line = win_line_shameless(buf, &line, &fd);
 	refresh_buf(buf);
 	return (line);
 }

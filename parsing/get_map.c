@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naben-za <naben-za@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:32:35 by bifrah            #+#    #+#             */
-/*   Updated: 2022/09/08 19:37:12 by naben-za         ###   ########.fr       */
+/*   Updated: 2022/09/09 11:44:24 by bifrah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@ static void	go_to_map_end(int *fd, int *map_end)
 		free(trash);
 		trash = get_next_line(*fd);
 	}
+}
+
+static void	go_to_map(int *fd)
+{
+	char	*trash;
+
+	trash = get_next_line(*fd);
+	free(trash);
 }
 
 /*
@@ -47,10 +55,7 @@ void	get_map(t_cub3d *game, int *fd, int map_start)
 	*fd = open_map(game, game->filename);
 	i = -1;
 	while (++i < map_start - 1)
-	{
-		trash = get_next_line(*fd);
-		free(trash);
-	}
+		go_to_map(fd);
 	j = 0;
 	while (i < map_end)
 	{
