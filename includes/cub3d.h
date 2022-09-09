@@ -83,7 +83,7 @@ typedef enum e_errno
 /*		Config for the player						*/
 /****************************************************/
 # define CUB_SIZE 64
-# define WIN_SIZE 1024
+# define WIN_SIZE 720
 # define FOV 66.0
 # define ROTATION_UNIT 10
 # define MOVEMENT_UNIT 20
